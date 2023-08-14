@@ -30,7 +30,7 @@ const App = () => {
 
   // write regex fom mail validation
 
-  console.log(import.meta);
+  // console.log(import.meta.env);
   const getItems = async () => {
     dispatch(loadItem())
   }

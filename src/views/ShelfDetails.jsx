@@ -1,8 +1,12 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom'
 
 const ShelfDetails = () => {
  return (
-  <div>ShelfDetails</div>
+  <div>
+   ShelfDetails
+   <Outlet />
+  </div>
  )
 }
 

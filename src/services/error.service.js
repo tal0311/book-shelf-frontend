@@ -1,7 +1,8 @@
 
-import { utilService } from './util.service.js'
-import { DEV_URL } from '../config.js'
+import { DEV_BASE_URL } from '../config.js'
+import { httpService } from './http.service.js'
 import { userService } from './user.service.js'
+
 
 
 
@@ -13,10 +14,11 @@ function logError(err, routeHistory) {
  const errorToLog = _createNewError(err)
 
 
- // if (!import.meta.url.includes(DEV_URL)) {
- //  console.error('%cError', _getStyles(), errorToLog)
- //  return
- // }
+ if (import.meta.env.MODE !== "development") {
+  console.error('%cError', _getStyles(), errorToLog)
+  httpService.post(DEV_BASE_URL, errorToLog)
+  return
+ }
  console.info('%cError', _getStyles(), errorToLog)
 }
 
