@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const AppHeader = () => {
 
@@ -34,9 +35,9 @@ const AppHeader = () => {
 
     <nav className="top-nav">
      <ul className='clean-list grid'>
-      {navLinks.map((link, idx) => {
+      {navLinks.map((navLink, idx) => {
        return (<li key={idx}>
-        <a href={link.path}>{link.name}</a>
+        <a href={navLink.path}>{navLink.name}</a>
        </li>
        )
       })}
@@ -45,7 +46,7 @@ const AppHeader = () => {
     </nav>
 
    </section>
-  </header>
+  </header >
  )
 }
 

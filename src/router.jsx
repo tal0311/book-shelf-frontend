@@ -6,6 +6,7 @@ import ShelfDetails from './views/ShelfDetails.jsx';
 import AppLogin from './views/AppLogin.jsx';
 import BookDetails from './views/BookDetails.jsx';
 import DashBoard from './views/DashBoard.jsx';
+import AppExplore from './views/AppExplore.jsx';
 
 
 const routes = [
@@ -18,6 +19,11 @@ const routes = [
   path: '/shelf',
   element: < AppIndex />,
   name: 'shelf'
+ },
+ {
+  path: '/explore',
+  element: < AppExplore />,
+  name: 'explore'
  },
  {
   path: '/shelf/:shelfId',

@@ -19,10 +19,27 @@
    }
   }
   .top-nav {
+   grid-auto-flow: column;
+   gap: 1em;
+   height: 100%;
+   align-items: center;
    ul {
     grid-auto-flow: column;
     gap: 1em;
+    height: 100%;
+    align-items: center;
    }
+   //  li {
+   //   height: 100%;
+   //   display: grid;
+   //   align-items: center;
+   //   a {
+   //    height: 100%;
+   //    display: grid;
+   //    align-items: center;
+   //   }
+   //  }
+   // }
   }
  }
 }

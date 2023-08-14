@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
   RouterProvider,
+  BrowserRouter
 } from "react-router-dom";
 import "./assets/styles/styles.scss";
 import { router } from './router'
@@ -11,7 +12,7 @@ import { router } from './router'
 import { useMatch, useNavigate } from 'react-router-dom';
 
 // to set the global $error object
-import {errorService} from './services/error.service'
+import { errorService } from './services/error.service'
 
 import AppLoader from "./cmps/AppLoader";
 import SvgIcon from './cmps/SvgIcon'
@@ -36,6 +37,7 @@ const App = () => {
 
   // if (!value) return <AppLoader />
   return (
+
     <section className="app-container main-layout">
       <AppHeader />
       <div className="router-view">
@@ -43,6 +45,8 @@ const App = () => {
       </div>
       {path !== '/' && <AppNav />}
     </section>
+
+
   )
 }
 export default App

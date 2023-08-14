@@ -10,13 +10,36 @@
  gap: 1rem;
  box-shadow: 0 0 5px 1px $clr4;
 
- input[type="search"] {
+ .search {
+  grid-auto-flow: column;
+  grid-template-columns: 1fr 10%;
+  align-items: center;
+  box-shadow: 0 0 5px 1px $clr4;
   position: absolute;
   top: -2.5rem;
   width: 200%;
   translate: -25%;
-  padding: 0.5rem;
-  border: none;
   border-radius: 0.2rem;
+
+  button {
+   display: grid;
+   place-items: center;
+   border: none;
+   background: none;
+   font-size: 1.5rem;
+   cursor: pointer;
+   i {
+    color: $clr4;
+   }
+   &.dirty {
+    i {
+     color: #54f454;
+    }
+   }
+  }
+  input[type="search"] {
+   border: none;
+   padding: 0.5rem;
+  }
  }
 }
