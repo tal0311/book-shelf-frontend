@@ -28,6 +28,9 @@ const App = () => {
     getItems()
   }, [items])
 
+  // write regex fom mail validation
+
+  console.log(import.meta);
   const getItems = async () => {
     dispatch(loadItem())
   }

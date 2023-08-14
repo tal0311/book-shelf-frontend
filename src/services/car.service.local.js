@@ -3,9 +3,9 @@ import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 
-const STORAGE_KEY = 'car'
+const STORAGE_KEY = 'shelf'
 
-export const carService = {
+export const shelfService = {
     query,
     getById,
     save,
@@ -13,53 +13,53 @@ export const carService = {
     getEmptyCar,
     addCarMsg
 }
-window.cs = carService
+window.cs = shelfService
 
 
 async function query(filterBy = { txt: '', price: 0 }) {
-    var cars = await storageService.query(STORAGE_KEY)
-    if (filterBy.txt) {
-        const regex = new RegExp(filterBy.txt, 'i')
-        cars = cars.filter(car => regex.test(car.vendor) || regex.test(car.description))
-    }
-    if (filterBy.price) {
-        cars = cars.filter(car => car.price <= filterBy.price)
-    }
-    return cars
+    var shelfs = await storageService.query(STORAGE_KEY)
+    // if (filterBy.txt) {
+    //     const regex = new RegExp(filterBy.txt, 'i')
+    //     shelfs = shelfs.filter(shelf => regex.test(shelf.vendor) || regex.test(shelf.description))
+    // }
+    // if (filterBy.price) {
+    //     shelfs = shelfs.filter(shelf => shelf.price <= filterBy.price)
+    // }
+    return shelfs
 }
 
-function getById(carId) {
-    return storageService.get(STORAGE_KEY, carId)
+function getById(shelfId) {
+    return storageService.get(STORAGE_KEY, shelfId)
 }
 
-async function remove(carId) {
-    await storageService.remove(STORAGE_KEY, carId)
+async function remove(shelfId) {
+    await storageService.remove(STORAGE_KEY, shelfId)
 }
 
-async function save(car) {
+async function save(shelf) {
     var savedCar
-    if (car._id) {
-        savedCar = await storageService.put(STORAGE_KEY, car)
+    if (shelf._id) {
+        savedCar = await storageService.put(STORAGE_KEY, shelf)
     } else {
         // Later, owner is set by the backend
-        car.owner = userService.getLoggedinUser()
-        savedCar = await storageService.post(STORAGE_KEY, car)
+        shelf.owner = userService.getLoggedinUser()
+        savedCar = await storageService.post(STORAGE_KEY, shelf)
     }
     return savedCar
 }
 
-async function addCarMsg(carId, txt) {
+async function addCarMsg(shelfId, txt) {
     // Later, this is all done by the backend
-    const car = await getById(carId)
-    if (!car.msgs) car.msgs = []
+    const shelf = await getById(shelfId)
+    if (!shelf.msgs) shelf.msgs = []
 
     const msg = {
         id: utilService.makeId(),
         by: userService.getLoggedinUser(),
         txt
     }
-    car.msgs.push(msg)
-    await storageService.put(STORAGE_KEY, car)
+    shelf.msgs.push(msg)
+    await storageService.put(STORAGE_KEY, shelf)
 
     return msg
 }
