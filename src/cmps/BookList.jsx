@@ -1,8 +1,11 @@
 import React from 'react'
+import BookPreview from './BookPreview'
 
-const BookList = () => {
+const BookList = ({books}) => {
  return (
-  <div>BookList</div>
+  <section className="book-list">
+   {books.map((book) => <BookPreview book={book} key={book.bookId}/>)}
+  </section>
  )
 }
 

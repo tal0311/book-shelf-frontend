@@ -74,6 +74,6 @@ function getEmptyCar() {
 
 
 // TEST DATA
-// ; (async () => {
-//     utilService.saveToStorage(STORAGE_KEY, shelves)
-// })()
+; (async () => {
+    utilService.saveToStorage(STORAGE_KEY, shelves)
+})()
