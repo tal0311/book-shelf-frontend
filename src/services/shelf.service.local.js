@@ -2,6 +2,7 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
+import shelves from './../../data/shelf.json' assert {type: 'json'}
 
 const STORAGE_KEY = 'shelf'
 
@@ -16,8 +17,8 @@ export const shelfService = {
 window.cs = shelfService
 
 
-async function query(filterBy = { txt: '', price: 0 }) {
-    var shelfs = await storageService.query(STORAGE_KEY)
+async function query(filterBy = { txt: '' }) {
+    var shelves = await storageService.query(STORAGE_KEY)
     // if (filterBy.txt) {
     //     const regex = new RegExp(filterBy.txt, 'i')
     //     shelfs = shelfs.filter(shelf => regex.test(shelf.vendor) || regex.test(shelf.description))
@@ -25,7 +26,7 @@ async function query(filterBy = { txt: '', price: 0 }) {
     // if (filterBy.price) {
     //     shelfs = shelfs.filter(shelf => shelf.price <= filterBy.price)
     // }
-    return shelfs
+    return shelves
 }
 
 function getById(shelfId) {
@@ -73,7 +74,6 @@ function getEmptyCar() {
 
 
 // TEST DATA
-// ;(async ()=>{
-//     await storageService.post(STORAGE_KEY, {vendor: 'Subali Karov 1', price: 180})
-//     await storageService.post(STORAGE_KEY, {vendor: 'Subali Rahok 2', price: 240})
+// ; (async () => {
+//     utilService.saveToStorage(STORAGE_KEY, shelves)
 // })()

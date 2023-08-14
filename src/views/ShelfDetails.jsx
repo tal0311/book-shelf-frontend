@@ -1,7 +1,10 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useParams } from 'react-router-dom'
 
 const ShelfDetails = () => {
+
+ const params = useParams()
+ console.log(params)
  return (
   <div>
    ShelfDetails

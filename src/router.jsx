@@ -7,6 +7,7 @@ import AppLogin from './views/AppLogin.jsx';
 import BookDetails from './views/BookDetails.jsx';
 import DashBoard from './views/DashBoard.jsx';
 
+
 const routes = [
  {
   path: '/',
@@ -19,12 +20,12 @@ const routes = [
   name: 'shelf'
  },
  {
-  path: '/shelf/:id',
+  path: '/shelf/:shelfId',
   element: <ShelfDetails />,
   name: 'shelf-details',
   children: [
    {
-    path: 'book/:id',
+    path: 'book/:bookId',
     element: <BookDetails />,
     name: 'book-details'
    }

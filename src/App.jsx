@@ -7,12 +7,7 @@ import {
 import "./assets/styles/styles.scss";
 import { router } from './router'
 
-import { useDispatch, useSelector } from 'react-redux'
-import {
-  loadItem,
-  removeItem,
-  setFilterBy
-} from './store/actions/items.actions'
+
 import { useMatch, useNavigate } from 'react-router-dom';
 
 import AppLoader from "./cmps/AppLoader";
@@ -25,20 +20,6 @@ const App = () => {
 
   const [items, setItems] = useState(null)
 
-
-  const value = useSelector(state => state.itemModule.items)
-  console.log('value:', value)
-  const dispatch = useDispatch()
-  useEffect(() => {
-    getItems()
-  }, [items])
-
-
-  const getItems = async () => {
-    dispatch(loadItem())
-  }
-
-
   const [path, setPath] = useState(window.location.pathname)
   useEffect(() => {
     updateNav()
@@ -50,7 +31,7 @@ const App = () => {
 
 
 
-  if (!value) return <AppLoader />
+  // if (!value) return <AppLoader />
   return (
     <section className="app-container main-layout">
       <AppHeader />
