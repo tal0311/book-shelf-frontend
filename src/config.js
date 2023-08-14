@@ -1,2 +1,2 @@
 // DEV_URL = 'localhost'
-DEV_BASE_URL = '/api/log'
+export const DEV_BASE_URL = '/api/log'

@@ -3,12 +3,11 @@ import { DEV_BASE_URL } from '../config.js'
 import { httpService } from './http.service.js'
 import { userService } from './user.service.js'
 
-
-
-
 export const errorService = {
  logError
 }
+
+
 
 function logError(err, routeHistory) {
  const errorToLog = _createNewError(err)
@@ -26,7 +25,7 @@ function logError(err, routeHistory) {
 
 function _createNewError(err) {
  return {
-  _id: utilService.makeId(),
+  _id: $utils.makeId(),
   desc: `[Error handler ${err}]`,
   user: userService.getLoggedinUser(),
  }
@@ -40,6 +39,6 @@ function _getStyles() {
  return 'color:#fff; background:red; padding:5px; border-radius:5px; font-weight:bold'
 }
 
-
+window.$error = errorService
 
 

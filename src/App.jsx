@@ -10,6 +10,9 @@ import { router } from './router'
 
 import { useMatch, useNavigate } from 'react-router-dom';
 
+// to set the global $error object
+import {errorService} from './services/error.service'
+
 import AppLoader from "./cmps/AppLoader";
 import SvgIcon from './cmps/SvgIcon'
 import AppHeader from './cmps/AppHeader.jsx'

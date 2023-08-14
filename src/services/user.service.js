@@ -1,10 +1,12 @@
-// import { storageService } from './async-storage.service'
+import {storageService} from './async-storage.service'
 import { httpService } from './http.service'
 // import { store } from '../store/store'
 // import { socketService, SOCKET_EVENT_USER_UPDATED, SOCKET_EMIT_USER_WATCH } from './socket.service'
 // import { showSuccessMsg } from './event-bus.service'
+import user from './../../data/user.json' assert {type: 'json'}
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
+const USER_DB = 'user'
 
 export const userService = {
     login,
@@ -23,8 +25,8 @@ window.userService = userService
 
 
 function getUsers() {
-    // return storageService.query('user')
-    return httpService.get(`user`)
+    return storageService.query('user')
+    // return httpService.get(`user`)
 }
 
 function onUserUpdate(user) {
@@ -59,7 +61,7 @@ async function login(userCred) {
     const user = users.find(user => user.username === userCred.username)
     // const user = await httpService.post('auth/login', userCred)
     if (user) {
-        socketService.login(user._id)
+        // socketService.login(user._id)
         return saveLocalUser(user)
     }
 }
@@ -93,15 +95,15 @@ function saveLocalUser(user) {
 }
 
 function getLoggedinUser() {
-    return Promise.resolve(JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER)))
+    return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
 
 
-// ;(async ()=>{
-//     await userService.signup({fullname: 'Puki Norma', username: 'puki', password:'123',score: 10000, isAdmin: false})
-//     await userService.signup({fullname: 'Master Adminov', username: 'admin', password:'123', score: 10000, isAdmin: true})
-//     await userService.signup({fullname: 'Muki G', username: 'muki', password:'123', score: 10000})
-// })()
+;(async ()=>{
+  $utils.saveToStorage(USER_DB, user)
+  login(user[0])
+  
+})()
 
 
 

@@ -5,19 +5,23 @@ const ShelvesList = ({ shelves }) => {
  const navigate = useNavigate()
 
 
+
  const navigateTo = (shelfId) => {
-  console.log('navigateTo', shelfId)
   navigate(`/shelf/${shelfId}`)
  }
 
+
  return (
   <div className='shelves-list'>
+   {!shelves && <div>Loading...</div>}
    {shelves && shelves.map(shelf => {
+    const { _id, title, description, createdAt, books } = shelf
     return (
-     <article onClick={() => navigateTo(shelf._id)} className='shelf-preview' key={shelf._id}>
-      <h2>{shelf.title}</h2>
-      <p>{shelf.description}</p>
-      <p>{shelf.createdAt}</p>
+     <article onClick={() => navigateTo(_id)} className='preview' key={_id}>
+      <h2>{title}</h2>
+      <p>{description}</p>
+      <p>{createdAt}</p>
+      <small><span>Items on this shelf</span> {books.length}</small>
      </article>
     )
    })}
