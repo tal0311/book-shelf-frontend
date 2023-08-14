@@ -13,13 +13,18 @@ import {
   removeItem,
   setFilterBy
 } from './store/actions/items.actions'
+import { useMatch, useNavigate } from 'react-router-dom';
 
+import AppLoader from "./cmps/AppLoader";
 import SvgIcon from './cmps/SvgIcon'
+import AppHeader from './cmps/AppHeader.jsx'
+import AppNav from './cmps/AppNav.jsx'
 
 {/* <SvgIcon iconname='logo' /> */ }
 const App = () => {
 
   const [items, setItems] = useState(null)
+
 
   const value = useSelector(state => state.itemModule.items)
   console.log('value:', value)
@@ -28,26 +33,32 @@ const App = () => {
     getItems()
   }, [items])
 
-  // write regex fom mail validation
 
-  // console.log(import.meta.env);
   const getItems = async () => {
     dispatch(loadItem())
   }
 
-  if (!value) return <div>Loading...</div>
+
+  const [path, setPath] = useState(window.location.pathname)
+  useEffect(() => {
+    updateNav()
+  }, [path])
+
+  const updateNav = () => {
+    if (path === '/') setPath('/')
+  }
+
+
+
+  if (!value) return <AppLoader />
   return (
-    <>
-      <header>
-        app header
-        {/* <SvgIcon iconName='logo' /> */}
-        {/* {value} */}
-      </header>
-      <RouterProvider router={router} />
-      <footer>
-        app footer
-      </footer>
-    </>
+    <section className="app-container main-layout">
+      <AppHeader />
+      <div className="router-view">
+        <RouterProvider router={router} />
+      </div>
+      {path !== '/' && <AppNav />}
+    </section>
   )
 }
 export default App

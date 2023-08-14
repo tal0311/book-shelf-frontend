@@ -9,33 +9,9 @@ html {
 body {
     margin: 0;
     height: 100dvh;
+    height: 100vh;
+
     // overflow: hidden;
-}
-#app {
-    height: 100%;
-}
-.app-header,
-.app-nav {
-    height: 8vh;
-    // background: lightcoral;
-}
-.app-main {
-    // background: lightblue;
-    height: 84vh;
-    overflow-y: auto;
-    &::-webkit-scrollbar {
-        // width: 1em;
-        // display: none;
-    }
-
-    &::-webkit-scrollbar-track {
-        // box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-        // display: none;
-    }
-
-    &::-webkit-scrollbar-thumb {
-        // background: none;
-    }
 }
 
 h1,
@@ -78,7 +54,10 @@ p {
 
 // links
 a {
-    &.active {
+    text-decoration: none;
+    color: inherit;
+    &:hover {
+        text-decoration: underline;
     }
 }
 
@@ -95,19 +74,19 @@ i {
 }
 
 [data-title] {
-      position: relative;
-    }
+    position: relative;
+}
 
-    [data-title]:hover::after {
-      content: attr(data-title);
-      position: absolute;
-      font-size: 12px;
-      background: #F10D0D;
-      color: #fff;
-      padding: 0.2em 0.3em;
-      border-radius: 0.2em;
-      text-transform: capitalize;
-      bottom: -25px;
-      width: max-content;
-      left: 12px;
-    }
+[data-title]:hover::after {
+    content: attr(data-title);
+    position: absolute;
+    font-size: 12px;
+    background: #f10d0d;
+    color: #fff;
+    padding: 0.2em 0.3em;
+    border-radius: 0.2em;
+    text-transform: capitalize;
+    bottom: -25px;
+    width: max-content;
+    left: 12px;
+}

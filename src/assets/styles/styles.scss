@@ -10,19 +10,10 @@
 @import "basics/layout";
 
 // COMPONENTS
-@import "components/app-nav";
-@import "components/app-header";
-@import "components/user-preview";
-@import "components/post-preview";
-@import "components/app-modal";
-@import "components/story-list";
-@import "components/post-list";
-@import "components/user-dashboard";
+
+@import "components/AppHeader";
+@import "components/App";
+@import "components/AppLoader";
+@import "components/AppNav";
 
 // views
-@import "views/app-feed";
-@import "views/app";
-@import "views/user-area";
-@import "views/post-details";
-@import "views/login";
-@import "views/user-Story";

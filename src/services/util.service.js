@@ -143,6 +143,11 @@ function isMobile() {
     return false
 }
 
+function getImg(url) {
+    return new URL(url, import.meta.url).href
+}
+
+
 
 export const utilService = {
     makeId,
@@ -159,5 +164,8 @@ export const utilService = {
     getFormattedTime,
     getVidFormattedDate,
     setConsoleData,
-    isMobile
+    isMobile,
+    getImg
 }
+
+window.$utils = utilService

@@ -9,36 +9,41 @@ import DashBoard from './views/DashBoard.jsx';
 
 const routes = [
  {
-  path: '/home',
+  path: '/',
   element: <AppHome />,
-
+  name: 'home'
  },
  {
   path: '/shelf',
   element: < AppIndex />,
-
+  name: 'shelf'
  },
  {
   path: '/shelf/:id',
   element: <ShelfDetails />,
+  name: 'shelf-details',
   children: [
    {
     path: 'book/:id',
     element: <BookDetails />,
+    name: 'book-details'
    }
   ]
  },
  {
   path: '/login',
   element: <AppLogin />,
+  name: 'login'
  },
  {
   path: '/dashboard',
   element: <DashBoard />,
+  name: 'dashboard'
  },
  {
   path: '*',
   element: <Outlet />,
+  name: 'not-found'
  },
 ];
 
