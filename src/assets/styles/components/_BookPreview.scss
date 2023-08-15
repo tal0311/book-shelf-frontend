@@ -1,2 +1,9 @@
 .book-preview {
+ box-shadow: 0 0 1px 1px $clr4;
+ padding: 0.5rem;
+ border-radius: 0.8rem;
+
+ img {
+  border-radius: 0.6rem;
+ }
 }

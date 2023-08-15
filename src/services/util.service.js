@@ -78,6 +78,13 @@ function animateCSS(el, animation) {
     })
 }
 
+
+function getDomainName(url) {
+    const regex = /^(?:https?:\/\/)?(?:www\.)?([^\/.]+)/
+    const match = url.match(regex)
+    return match ? match[1] : null
+}
+
 function setAppConfig(app, title = null) {
 
     const iconsUrls = {
@@ -165,7 +172,8 @@ export const utilService = {
     getVidFormattedDate,
     setConsoleData,
     isMobile,
-    getImg
+    getImg,
+    getDomainName
 }
 
 window.$utils = utilService
