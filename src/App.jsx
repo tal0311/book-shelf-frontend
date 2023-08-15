@@ -32,14 +32,11 @@ import BookDetails from './views/BookDetails.jsx'
 {/* <SvgIcon iconname='logo' /> */ }
 const App = () => {
 
-  const [path, setPath] = useState(window.location.pathname)
+  const [path, setPath] = useState('/')
   useEffect(() => {
     updateNav()
-  }, [path])
+  }, [window.location.pathname])
 
-
-  const navigate = useNavigate()
-  const match = useMatch('/')
 
   const updateNav = () => {
     setPath(window.location.pathname)
@@ -52,7 +49,7 @@ const App = () => {
       <AppHeader />
       <div className="router-view">
         <Routes>
-          <Route path="/" element={<AppHome />} />
+          <Route path="/" name="home" element={<AppHome />} />
           <Route path="/shelf" element={<AppIndex />} />
           <Route path="/explore" element={<AppExplore />} />
           <Route path="/shelf/:shelfId" element={<ShelfDetails />} />
@@ -62,7 +59,7 @@ const App = () => {
           <Route path="*" element={<Outlet />} />
         </Routes>
       </div>
-      <AppNav />
+      {path !== '/' && < AppNav />}
     </section>
 
   )

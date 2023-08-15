@@ -1,4 +1,42 @@
 .shelves-list {
- grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+ grid-template-columns: 1fr;
+ grid-auto-flow: dense;
+ margin: 1rem auto;
  gap: 1rem;
+
+ .shelf-preview {
+  // margin: 1rem 1rem;
+  position: relative;
+  padding: 1rem;
+  img {
+   position: absolute;
+   inset: 0;
+   height: 100%;
+   width: 100%;
+   object-fit: cover;
+   z-index: -1;
+   opacity: 0.5;
+  }
+ }
+
+ @media (width>$break-narrow) {
+  grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+  grid-auto-flow: dense;
+  width: 100%;
+
+  .grid-item {
+   box-shadow: 0 0 0 1px $clr4;
+   width: 100%;
+  }
+
+  .grid-item:nth-child(4n) {
+   grid-column: span 2;
+   grid-row: span 2;
+  }
+
+  .grid-item:nth-child(6n) {
+   grid-column: span 3;
+   grid-row: span 3;
+  }
+ }
 }
