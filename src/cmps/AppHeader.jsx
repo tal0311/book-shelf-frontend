@@ -37,7 +37,7 @@ const AppHeader = () => {
      <ul className='clean-list grid'>
       {navLinks.map((navLink, idx) => {
        return (<li key={idx}>
-        <a href={navLink.path}>{navLink.name}</a>
+        <Link to={navLink.path}>{navLink.name}</Link>
        </li>
        )
       })}
