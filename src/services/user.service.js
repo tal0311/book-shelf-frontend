@@ -1,5 +1,6 @@
-import {storageService} from './async-storage.service'
+import { storageService } from './async-storage.service'
 import { httpService } from './http.service'
+import { utilService } from './util.service'
 // import { store } from '../store/store'
 // import { socketService, SOCKET_EVENT_USER_UPDATED, SOCKET_EMIT_USER_WATCH } from './socket.service'
 // import { showSuccessMsg } from './event-bus.service'
@@ -99,10 +100,10 @@ function getLoggedinUser() {
 }
 
 
-;(async ()=>{
-  $utils.saveToStorage(USER_DB, user)
-  login(user[0])
-  
+; (async () => {
+    utilService.saveToStorage(USER_DB, user)
+    login(user[0])
+
 })()
 
 
