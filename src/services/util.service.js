@@ -85,40 +85,7 @@ function getDomainName(url) {
     return match ? match[1] : null
 }
 
-function setAppConfig(app, title = null) {
 
-    const iconsUrls = {
-        apps: {
-            url: '',
-            title: 'Google-Apps',
-            bgc: 'var(--Mclr5)'
-        },
-        keep: {
-            url: 'https://ssl.gstatic.com/keep/keep_2020q4v2.ico',
-            title: 'Google Keep',
-            bgc: 'var(--Mclr5)'
-        },
-        gmail: {
-            url: 'https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico',
-            title: 'Gmail',
-            bgc: 'var(--Mclr1)'
-        },
-        youtube: {
-            url: 'https://www.youtube.com/s/desktop/afaf5292/img/favicon.ico',
-            title: 'YouTube',
-            bgc: 'var(--Mclr5)'
-        }
-    }
-    const linkElement = document.createElement('link');
-    linkElement.rel = 'shortcut icon';
-    linkElement.href = iconsUrls[app].url;
-    linkElement.type = 'image/x-icon';
-    document.head.appendChild(linkElement);
-    document.title = title || iconsUrls[app].title
-    document.body.style.background = iconsUrls[app].bgc
-    document.body.setAttribute('app', app)
-
-}
 
 
 
@@ -165,7 +132,6 @@ export const utilService = {
     getDayName,
     getMonthName,
     animateCSS,
-    setAppConfig,
     getFormattedDate,
     debounce,
     getFormattedTime,
