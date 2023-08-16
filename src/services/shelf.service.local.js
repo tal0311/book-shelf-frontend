@@ -14,7 +14,7 @@ export const shelfService = {
     getEmptyCar,
     addCarMsg
 }
-window.cs = shelfService
+window.shelfService = shelfService
 
 
 async function query(filterBy = { txt: '' }) {

@@ -4,24 +4,6 @@
  margin: 1rem auto;
  gap: 1rem;
 
- .shelf-preview {
-  box-shadow: 0 0 1px 1px $clr4;
-  padding: 0.5rem;
-  border-radius: 0.8rem;
-  position: relative;
-  padding: 1rem;
-  img {
-   border-radius: 0.8rem;
-   position: absolute;
-   inset: 0;
-   height: 100%;
-   width: 100%;
-   object-fit: cover;
-   z-index: -1;
-   opacity: 0.5;
-  }
- }
-
  @media (width>$break-narrow) {
   grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
   grid-auto-flow: dense;
