@@ -1,6 +1,6 @@
 import { shelfService } from "../../services/shelf.service.local"
 
-export function loadItem() {
+export function loadItems() {
 
     return async (dispatch, getState) => {
         try {

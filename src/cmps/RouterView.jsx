@@ -11,7 +11,7 @@ import {
  useSearchParams
 } from "react-router-dom";
 
-
+import { useSelector } from 'react-redux'
 
 
 import AppHome from './../views/AppHome.jsx'
@@ -26,7 +26,9 @@ import React from 'react'
 
 // before each route
 
+
 const routesHistory = []
+window.routesHistory = routesHistory
 function RouteGuard({ routeName, children }) {
 
  const params = useParams()
@@ -36,42 +38,47 @@ function RouteGuard({ routeName, children }) {
   queryParams[key] = value;
  }
 
- const user = useSelector(state => state.userReducer.user)
- routesHistory.push({ routeName, user, params, query })
+ const user = useSelector(state => state.userModule.loggedInUser)
+ routesHistory.push({ routeName, user, params, queryParams })
 
  const isLoggedIn = true
 
 
  if (routeName === 'details') {
-  console.log('routeName', routeName);
+
   // some logic
-  if (!isLoggedIn) return <Navigate to="/" />
+  if (!user) return <Navigate to="/" />
  }
 
  if (routeName === 'edit') {
   // some logic
-  if (!isLoggedIn) return <Navigate to="/" />
+  if (!user) return <Navigate to="/" />
  }
  if (routeName === 'add') {
   // some logic
-  if (!isLoggedIn) return <Navigate to="/" />
+  if (!user) return <Navigate to="/" />
  }
  return <>{children}</>
 }
+
+
+
+
 
 const RouterView = () => {
  return (
   <Routes>
    <Route path="/" name="home" element={<AppHome />} />
-   <Route path="/shelf" name="app" element={<AppIndex />} />
-   <Route path="/explore" name="explore" element={<AppExplore />} />
+   <Route path="/shelf" name="app" element={<RouteGuard routeName="index"><AppIndex /></RouteGuard>} />
+   <Route path="/explore" name="explore" element={<RouteGuard><AppExplore /></RouteGuard>} />
 
-   <Route path="/shelf/:shelfId" name="details" element={<ShelfDetails />} >
-    <Route path="/shelf/:shelfId/book/:bookId" name="book-details" element={<BookDetails />} />
+
+   <Route path="/shelf/:shelfId" name="details" element={<RouteGuard routeName="shelf-details"><ShelfDetails /></RouteGuard>} >
+    <Route path="/shelf/:shelfId/book/:bookId" name="book-details" element={<RouteGuard routeName="book-details"><BookDetails /></RouteGuard>} />
    </Route>
 
    <Route path="/login" name="login" element={<AppLogin />} />
-   <Route path="/dashboard" name="dashboard" element={<DashBoard />} />
+   <Route path="/dashboard" name="dashboard" element={<RouteGuard routeName="dashboard"><DashBoard /></RouteGuard>} />
    <Route path="*" element={<Outlet />} />
   </Routes>
  )
