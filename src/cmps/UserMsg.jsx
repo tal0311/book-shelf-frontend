@@ -5,15 +5,15 @@ import { eventBus, SHOW_MSG } from '../services/event-bus.service'
 const UserMsg = () => {
 
  const [msg, setMsg] = useState('')
+ let subscription = null
  useEffect(() => {
-  eventBus.on(SHOW_MSG, setUserMsg)
+  subscription = eventBus.on(SHOW_MSG, setUserMsg)
   return () => {
-
+   subscription()
   }
  }, [])
 
  const setUserMsg = (msg) => {
-  console.log('msg', msg);
   setMsg(msg)
   setTimeout(() => {
    setMsg('')

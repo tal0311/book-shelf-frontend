@@ -16,19 +16,19 @@
   align-items: center;
   box-shadow: 0 0 5px 1px $clr4;
   position: fixed;
-  top: -2.5rem;
+  top: -4rem;
   left: 50%;
   width: 80vw;
   translate: -50%;
   border-radius: 0.2rem;
   background: inherit;
+  gap: 5px;
 
   button {
    display: grid;
    place-items: center;
    border: none;
    background: inherit;
-   font-size: 1.5rem;
    cursor: pointer;
    i {
     color: $clr4;
@@ -41,7 +41,8 @@
   }
   input[type="search"] {
    border: none;
-   padding: 0.5rem;
+   padding: 1rem;
+   font-size: 1rem;
   }
  }
 }
