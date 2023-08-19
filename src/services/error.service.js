@@ -4,9 +4,13 @@ import { httpService } from './http.service.js'
 import { userService } from './user.service.js'
 
 export const errorService = {
- logError
+ logError,
+ setup
 }
 
+function setup() {
+ window.$error = errorService
+}
 
 
 function logError(err, routeHistory) {
@@ -39,6 +43,6 @@ function _getStyles() {
  return 'color:#fff; background:red; padding:5px; border-radius:5px; font-weight:bold'
 }
 
-window.$error = errorService
+
 
 
