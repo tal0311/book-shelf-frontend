@@ -67,14 +67,20 @@
 
 // Buttons
 
-@mixin btn($type: regular, $bg: $clr1, $clr: $clr3, $padding: em(24px) em(44px), $hover: darken($bg, 8%)) {
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
+@mixin btn(
+  $type: regular,
+  $bg: lighten($clr7, 20%),
+  $clr: $clr1,
+  $padding: em(6px) em(6px),
+  $hover: lighten($bg, 25%)
+) {
+  display: grid;
+  place-content: center;
   text-transform: uppercase;
   padding: $padding;
+  border-radius: $br;
   line-height: 1.25;
-  font-size: em(14px);
+  font-size: em(12px);
   font-variation-settings: "wght" 430;
   border: none;
   cursor: pointer;
@@ -121,7 +127,9 @@
   @if $type == bold {
     font-variation-settings: "wght" 430;
   } @else if $type == boldCondensed {
-    font-variation-settings: "wght" 430, "wdth" 80;
+    font-variation-settings:
+      "wght" 430,
+      "wdth" 80;
     letter-spacing: em(6.72px);
   } @else if $type == condensed {
     font-variation-settings: "wdth" 80;

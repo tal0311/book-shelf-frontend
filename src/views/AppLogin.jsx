@@ -26,7 +26,7 @@ const AppLogin = () => {
      <label htmlFor="password">password</label>
      <input type={isVisible ? 'text' : 'password'} name='password' />
      <i onClick={togglePassWordVisability}
-      className="material-symbols-outlined">{isVisible ? 'visibility' : 'visibility_off'}</i>
+      className="toggle-password material-symbols-outlined">{isVisible ? 'visibility' : 'visibility_off'}</i>
     </div>
 
     <div className='actions-container'>

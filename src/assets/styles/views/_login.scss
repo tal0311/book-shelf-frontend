@@ -1,13 +1,17 @@
 .app-login {
  height: 90vh;
- background: lightblue;
+ // background: lightblue;
  place-content: center;
  form {
+  box-shadow: 0 0 5px 1px #dbdbdb;
   display: grid;
   gap: 0.5rem;
   background: $clr1;
   padding: 1rem;
   border-radius: $br;
+  button {
+   @include btn(regular);
+  }
   input {
    color: $clr7;
    font-size: 1rem;
@@ -19,6 +23,30 @@
    &:focus {
     outline: 1px solid $clr7;
    }
+  }
+  .password-container {
+   display: grid;
+   grid-template-columns: 1fr auto;
+   gap: 0.5rem;
+   align-items: center;
+   position: relative;
+
+   .toggle-password {
+    position: absolute;
+    right: 7px;
+    top: 62%;
+    cursor: pointer;
+    font-size: 1.1rem;
+   }
+   input {
+    border-radius: $br;
+    grid-column: 1 / -1;
+   }
+  }
+  .actions-container {
+   display: grid;
+   grid-auto-flow: column;
+   justify-content: space-between;
   }
  }
 }
