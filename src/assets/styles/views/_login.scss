@@ -9,8 +9,11 @@
   background: $clr1;
   padding: 1rem;
   border-radius: $br;
-  button {
+  button:first-child {
    @include btn(regular);
+  }
+  button:last-child {
+   @include btn(light);
   }
   input {
    color: $clr7;
