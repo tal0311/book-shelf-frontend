@@ -38,15 +38,15 @@ async function remove(shelfId) {
 }
 
 async function save(shelf) {
-    var savedCar
+    var savedShelf
     if (shelf._id) {
-        savedCar = await storageService.put(STORAGE_KEY, shelf)
+        savedShelf = await storageService.put(STORAGE_KEY, shelf)
     } else {
         // Later, owner is set by the backend
         shelf.owner = userService.getLoggedinUser()
-        savedCar = await storageService.post(STORAGE_KEY, shelf)
+        savedShelf = await storageService.post(STORAGE_KEY, shelf)
     }
-    return savedCar
+    return savedShelf
 }
 
 async function addCarMsg(shelfId, txt) {
@@ -74,6 +74,6 @@ function getEmptyCar() {
 
 
 // TEST DATA
-; (async () => {
-    utilService.saveToStorage(STORAGE_KEY, shelves)
-})()
+// ; (async () => {
+//     utilService.saveToStorage(STORAGE_KEY, shelves)
+// })()

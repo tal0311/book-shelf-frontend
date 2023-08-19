@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import {
  loadItems,
  removeItem,
- setFilterBy
+ setFilterBy,
+ updateItem
 } from './../store/actions/items.actions'
 
 import ShelvesList from '../cmps/ShelvesList'
@@ -20,17 +21,17 @@ const AppIndex = () => {
  }, [items])
 
  useEffect(() => {
+  if (items) return
   getItems()
  }, [])
 
  const dispatch = useDispatch()
  const getItems = async () => {
   dispatch(loadItems())
-
  }
 
- const onAction = (ev, action, itemId) => {
-  ev.stopPropagation()
+ const onAction = (action, itemId) => {
+
   if (action === 'delete') {
    const isConfirmed = confirm('Are you sure you wish to delete this shelf?')
    if (isConfirmed) {
@@ -46,15 +47,17 @@ const AppIndex = () => {
    console.log('settings');
    // dispatch(setFilterBy({ archived: false }))
   }
-  if (action === 'edit') {
-   console.log('edit');
-  }
 
+ }
+
+ const updateShelf = (shelf) => {
+  console.log(shelf);
+  dispatch(updateItem(shelf))
  }
 
  return (
   <>
-   <ShelvesList onAction={onAction} shelves={shelves} />
+   <ShelvesList onAction={onAction} updateShelf={updateShelf} shelves={shelves} />
   </>
  )
 }

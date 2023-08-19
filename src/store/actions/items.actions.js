@@ -11,7 +11,8 @@ export function loadItems() {
             console.log('items:', items)
             dispatch({ type: SET_ITEMS, items })
         } catch (err) {
-            console.log('err:', err)
+            console.error('err:', err)
+
         }
     }
 }
@@ -24,7 +25,19 @@ export function removeItem(itemId) {
             dispatch({ type: REMOVE_ITEM, itemId })
             return 'hello'
         } catch (err) {
-            console.log('err:', err)
+            console.error('err:', err)
+
+        }
+    }
+}
+export function updateItem(item) {
+    return async (dispatch) => {
+        try {
+            await shelfService.save(item)
+            dispatch({ type: UPDATE_ITEM, item })
+            return 'hello'
+        } catch (err) {
+            console.error('err:', err)
         }
     }
 }
@@ -35,7 +48,7 @@ export function setFilterBy(filterBy) {
         try {
             dispatch({ type: SET_FILTER_BY, filterBy: { ...filterBy } })
         } catch (err) {
-            console.log('err:', err)
+            console.error('err:', err)
         }
     }
 }

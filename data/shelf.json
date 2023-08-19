@@ -5,6 +5,13 @@
   "description": "my frontend shelf",
   "createdAt": 1691922312831,
   "imgUrl": "https://source.unsplash.com/random/400x400/?react",
+  "owner": {
+   "ownerId": "u101",
+   "fullname": "Tal Amit",
+   "username": "tal.amit",
+   "email": "tal.amit0311@gmail.com",
+   "imgUrl": "https://res.cloud"
+  },
   "books": [
    {
     "bookId": "b101",
@@ -39,6 +46,13 @@
   "description": "my backend shelf",
   "createdAt": 1691922312831,
   "imgUrl": "https://source.unsplash.com/random/400x400/?apple",
+  "owner": {
+   "ownerId": "u101",
+   "fullname": "Tal Amit",
+   "username": "tal.amit",
+   "email": "tal.amit0311@gmail.com",
+   "imgUrl": "https://res.cloud"
+  },
   "books": [
    {
     "bookId": "b101",
@@ -73,6 +87,13 @@
   "description": "my backend shelf",
   "createdAt": 1691922312831,
   "imgUrl": "https://source.unsplash.com/random/400x400/?apple",
+  "owner": {
+   "ownerId": "u101",
+   "fullname": "Tal Amit",
+   "username": "tal.amit",
+   "email": "tal.amit0311@gmail.com",
+   "imgUrl": "https://res.cloud"
+  },
   "books": [
    {
     "bookId": "b101",
@@ -107,6 +128,13 @@
   "description": "my backend shelf",
   "createdAt": 1691922312831,
   "imgUrl": "https://source.unsplash.com/random/400x400/?apple",
+  "owner": {
+   "ownerId": "u101",
+   "fullname": "Tal Amit",
+   "username": "tal.amit",
+   "email": "tal.amit0311@gmail.com",
+   "imgUrl": "https://res.cloud"
+  },
   "books": [
    {
     "bookId": "b101",
@@ -141,6 +169,13 @@
   "description": "my backend shelf",
   "createdAt": 1691922312831,
   "imgUrl": "https://source.unsplash.com/random/400x400/?apple",
+  "owner": {
+   "ownerId": "u101",
+   "fullname": "Tal Amit",
+   "username": "tal.amit",
+   "email": "tal.amit0311@gmail.com",
+   "imgUrl": "https://res.cloud"
+  },
   "books": [
    {
     "bookId": "b101",
@@ -175,6 +210,13 @@
   "description": "my backend shelf",
   "createdAt": 1691922312831,
   "imgUrl": "https://source.unsplash.com/random/400x400/?apple",
+  "owner": {
+   "ownerId": "u101",
+   "fullname": "Tal Amit",
+   "username": "tal.amit",
+   "email": "tal.amit0311@gmail.com",
+   "imgUrl": "https://res.cloud"
+  },
   "books": [
    {
     "bookId": "b101",
