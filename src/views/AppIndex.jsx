@@ -8,11 +8,15 @@ import {
  setFilterBy,
  updateItem
 } from './../store/actions/items.actions'
+import { eventBus, SHOW_MSG, showUserMsg } from '../services/event-bus.service.js'
 
 import ShelvesList from '../cmps/ShelvesList'
 
 const AppIndex = () => {
  const [shelves, setShelves] = useState(null)
+
+
+
  const items = useSelector(state => state.itemModule.items)
  useEffect(() => {
   if (items) {
@@ -21,7 +25,6 @@ const AppIndex = () => {
  }, [items])
 
  useEffect(() => {
-  if (items) return
   getItems()
  }, [])
 
@@ -53,7 +56,10 @@ const AppIndex = () => {
  const updateShelf = (shelf) => {
   console.log(shelf);
   dispatch(updateItem(shelf))
+  showUserMsg('Shelf updated')
  }
+
+
 
  return (
   <>

@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
-
-
 import "./assets/styles/styles.scss";
-
-
 // to set the global $error object
 import { errorService } from './services/error.service'
+import { useLocation } from 'react-router-dom'
 import RouterView from './cmps/RouterView.jsx'
 import AppNav from './cmps/AppNav.jsx'
 import AppHeader from './cmps/AppHeader.jsx'
-import { useLocation } from 'react-router-dom'
+import UserMsg from "./cmps/UserMsg";
+import { eventBus, showSuccessMsg, showUserMsg } from "./services/event-bus.service";
 
 
 
@@ -31,6 +29,8 @@ const App = () => {
     setIsNavDisplayed(true)
   }
 
+
+
   return (
     <section className="app-container main-layout">
       <AppHeader />
@@ -38,6 +38,7 @@ const App = () => {
         <RouterView />
       </div>
       {isNavDisplayed && < AppNav />}
+      <UserMsg />
     </section>
 
   )
