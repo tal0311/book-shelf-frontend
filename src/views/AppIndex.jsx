@@ -26,10 +26,35 @@ const AppIndex = () => {
  const dispatch = useDispatch()
  const getItems = async () => {
   dispatch(loadItems())
+
  }
+
+ const onAction = (ev, action, itemId) => {
+  ev.stopPropagation()
+  if (action === 'delete') {
+   const isConfirmed = confirm('Are you sure you wish to delete this shelf?')
+   if (isConfirmed) {
+    console.log('delete');
+    dispatch(removeItem(itemId))
+   }
+  }
+  if (action === 'archive') {
+   console.log('archive');
+   // dispatch(setFilterBy({ archived: true }))
+  }
+  if (action === 'settings') {
+   console.log('settings');
+   // dispatch(setFilterBy({ archived: false }))
+  }
+  if (action === 'edit') {
+   console.log('edit');
+  }
+
+ }
+
  return (
   <>
-   <ShelvesList shelves={shelves} />
+   <ShelvesList onAction={onAction} shelves={shelves} />
   </>
  )
 }

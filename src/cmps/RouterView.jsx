@@ -41,23 +41,15 @@ function RouteGuard({ routeName, children }) {
  const user = useSelector(state => state.userModule.loggedInUser)
  routesHistory.push({ routeName, user, params, queryParams })
 
- const isLoggedIn = true
-
-
+ if (!user) return <Navigate to="/login" />
  if (routeName === 'shelf') {
   console.log('routeName', routeName);
-
-  // some logic
-  if (!user) return <Navigate to="/" />
  }
-
  if (routeName === 'edit') {
-  // some logic
-  if (!user) return <Navigate to="/" />
+  console.log('routeName', routeName);
  }
  if (routeName === 'add') {
-  // some logic
-  if (!user) return <Navigate to="/" />
+  console.log('routeName', routeName);
  }
  return <>{children}</>
 }

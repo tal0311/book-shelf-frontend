@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
-const ItemActions = ({ onAction }) => {
+const ItemActions = ({ itemId, onAction }) => {
  const [isActive, setIsActive] = useState(false)
 
 
@@ -35,7 +35,7 @@ const ItemActions = ({ onAction }) => {
      {actions.map((action, index) => {
       return (
        <li key={index}>
-        <button className='icon'>
+        <button onClick={(ev) => onAction(ev, action.actiontype, itemId)} className='icon'>
          <i className="material-symbols-outlined">
           {action.icon}
          </i>

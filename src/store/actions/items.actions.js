@@ -1,4 +1,5 @@
 import { shelfService } from "../../services/shelf.service.local"
+import { REMOVE_ITEM, SET_FILTER_BY, UPDATE_ITEM, ADD_ITEM, SET_ITEMS } from './../reducers/items.reducer'
 
 export function loadItems() {
 
@@ -8,19 +9,19 @@ export function loadItems() {
             const filterBy = getState().itemModule.filterBy
             const items = await shelfService.query(filterBy)
             console.log('items:', items)
-            dispatch({ type: 'SET_ITEMS', items })
+            dispatch({ type: SET_ITEMS, items })
         } catch (err) {
             console.log('err:', err)
         }
     }
 }
 
-export function removeItem(robotId) {
+export function removeItem(itemId) {
 
     return async (dispatch) => {
         try {
-            const items = await shelfService.remove(robotId)
-            dispatch({ type: 'REMOVE_ITEM', robotId })
+            await shelfService.remove(itemId)
+            dispatch({ type: REMOVE_ITEM, itemId })
             return 'hello'
         } catch (err) {
             console.log('err:', err)
@@ -32,7 +33,7 @@ export function setFilterBy(filterBy) {
 
     return (dispatch) => {
         try {
-            dispatch({ type: 'SET_FILTER_BY', filterBy: { ...filterBy } })
+            dispatch({ type: SET_FILTER_BY, filterBy: { ...filterBy } })
         } catch (err) {
             console.log('err:', err)
         }
