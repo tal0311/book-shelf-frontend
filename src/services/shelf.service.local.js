@@ -12,7 +12,8 @@ export const shelfService = {
     save,
     remove,
     getEmptyCar,
-    addCarMsg
+    addCarMsg,
+    getBookById
 }
 window.shelfService = shelfService
 
@@ -31,6 +32,12 @@ async function query(filterBy = { txt: '' }) {
 
 function getById(shelfId) {
     return storageService.get(STORAGE_KEY, shelfId)
+}
+
+async function getBookById(bookId, shelfId) {
+    const shelf = await storageService.get(STORAGE_KEY, shelfId)
+    console.debug('♠️ ~ file: shelf.service.local.js:39 ~ getBookById ~ shelf:', shelf)
+    return shelf.books.find(book => book.bookId === bookId)
 }
 
 async function remove(shelfId) {
