@@ -8,13 +8,13 @@
  grid-auto-flow: column;
  padding: 0.5rem 1rem;
  gap: 1rem;
- box-shadow: 0 0 5px 1px $clr4;
+ box-shadow: $bs;
 
  .search {
   grid-auto-flow: column;
   grid-template-columns: 1fr 10%;
   align-items: center;
-  box-shadow: 0 0 5px 1px $clr4;
+  box-shadow: $bs;
   position: fixed;
   top: -4rem;
   left: 50%;
@@ -43,6 +43,7 @@
    border: none;
    padding: 1rem;
    font-size: 1rem;
+   border-radius: inherit;
   }
  }
 }
