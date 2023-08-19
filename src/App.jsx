@@ -9,26 +9,35 @@ import { errorService } from './services/error.service'
 import RouterView from './cmps/RouterView.jsx'
 import AppNav from './cmps/AppNav.jsx'
 import AppHeader from './cmps/AppHeader.jsx'
+import { useLocation } from 'react-router-dom'
 
 
 
 const App = () => {
 
-  const [path, setPath] = useState('/')
+  const location = useLocation()
+
+  const [isNavDisplayed, setIsNavDisplayed] = useState(true)
   useEffect(() => {
     updateNav()
-  }, [window.location.pathname])
+  }, [location.pathname])
 
   const updateNav = () => {
-    setPath(window.location.pathname)
+    const displayedOpts = ['/', '/explore', '/login']
+    if (displayedOpts.includes(location.pathname)) {
+      setIsNavDisplayed(false)
+      return
+    }
+    setIsNavDisplayed(true)
   }
+
   return (
     <section className="app-container main-layout">
       <AppHeader />
       <div className="router-view">
         <RouterView />
       </div>
-      {path !== '/' && < AppNav />}
+      {isNavDisplayed && < AppNav />}
     </section>
 
   )

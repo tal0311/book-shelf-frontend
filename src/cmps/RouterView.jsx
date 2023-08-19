@@ -44,7 +44,8 @@ function RouteGuard({ routeName, children }) {
  const isLoggedIn = true
 
 
- if (routeName === 'details') {
+ if (routeName === 'shelf') {
+  console.log('routeName', routeName);
 
   // some logic
   if (!user) return <Navigate to="/" />
@@ -69,7 +70,7 @@ const RouterView = () => {
  return (
   <Routes>
    <Route path="/" name="home" element={<AppHome />} />
-   <Route path="/shelf" name="app" element={<RouteGuard routeName="index"><AppIndex /></RouteGuard>} />
+   <Route path="/shelf" name="app" element={<RouteGuard routeName="shelf"><AppIndex /></RouteGuard>} />
    <Route path="/explore" name="explore" element={<RouteGuard><AppExplore /></RouteGuard>} />
 
 
@@ -81,7 +82,9 @@ const RouterView = () => {
    <Route path="/dashboard" name="dashboard" element={<RouteGuard routeName="dashboard"><DashBoard /></RouteGuard>} />
    <Route path="*" element={<Outlet />} />
   </Routes>
+
  )
+
 }
 
 export default RouterView
