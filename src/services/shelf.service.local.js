@@ -13,7 +13,10 @@ export const shelfService = {
     remove,
     getEmptyCar,
     addCarMsg,
-    getBookById
+    getBookById,
+    removeBook,
+    saveBook,
+
 }
 window.shelfService = shelfService
 
@@ -42,6 +45,24 @@ async function getBookById(bookId, shelfId) {
 
 async function remove(shelfId) {
     await storageService.remove(STORAGE_KEY, shelfId)
+}
+
+async function removeBook(bookId, shelfId) {
+    const shelf = await storageService.get(STORAGE_KEY, shelfId)
+    shelf.books = shelf.books.filter(book => book.bookId !== bookId)
+    await storageService.put(STORAGE_KEY, shelf)
+}
+
+async function saveBook(book, shelfId) {
+    const shelf = await storageService.get(STORAGE_KEY, shelfId)
+    if (book.bookId) {
+        const bookIdx = shelf.books.findIndex(currBook => currBook.bookId === book.bookId)
+        shelf.books.splice(bookIdx, 1, book)
+    } else {
+        book.bookId = utilService.makeId()
+        shelf.books.push(book)
+    }
+    await storageService.put(STORAGE_KEY, shelf)
 }
 
 async function save(shelf) {

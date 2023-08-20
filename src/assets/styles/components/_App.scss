@@ -18,6 +18,9 @@
   "opsz" 48;
  color: $clr2;
  cursor: pointer;
+ &:hover {
+  color: lighten($clr2, 50%);
+ }
 }
 
 .app-main {

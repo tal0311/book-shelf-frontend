@@ -5,5 +5,17 @@
 
  img {
   border-radius: 0.6rem;
+  aspect-ratio: 1/1;
+ }
+
+ &.list {
+  .actions-container {
+   grid-auto-flow: column;
+   justify-content: start;
+  }
+ }
+
+ .actions-container {
+  grid-auto-flow: column;
  }
 }

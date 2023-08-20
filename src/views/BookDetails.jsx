@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 
 import { shelfService } from '../services/shelf.service.local'
 import BookPreview from '../cmps/BookPreview'
@@ -8,31 +8,54 @@ import BookPreview from '../cmps/BookPreview'
 
 const BookDetails = () => {
  const [book, setBook] = useState(null)
- const params = useParams()
  const dialogRef = useRef(null)
+ const params = useParams()
+ const { bookId, shelfId } = params
 
  useEffect(() => {
   loadBook()
  }, [])
 
  const loadBook = async () => {
-  const { bookId, shelfId } = params
   const book = await shelfService.getBookById(bookId, shelfId)
   if (book) dialogRef.current.showModal()
   setBook(book)
  }
+
+ const navigate = useNavigate()
  const closeModal = () => {
   dialogRef.current.close()
+  navigate(-1)
+ }
+
+ const onAction = async (action) => {
+  console.log(action)
+  if (action === 'edit') {
+   setIsEditable((prevState) => !prevState)
+  }
+  if (action === 'delete') {
+   await shelfService.removeBook(book.bookId, book.shelfId)
+  }
+ }
+
+ const [isEditable, setIsEditable] = useState(false)
+
+ const updateBook = async (ev) => {
+  ev.stopPropagation()
+  const { innerText, innerHTML, className } = ev.target
+
+  const field = className === 'title' ? 'title' : 'desc'
+  const newBook = { ...book, [field]: innerText }
+  await shelfService.saveBook(newBook, shelfId)
+  setBook((prevBook) => ({ ...prevBook, [field]: innerText }))
  }
 
  return (
-  <dialog ref={dialogRef}>
-   <button>
+  <dialog className='book-details-dialog' ref={dialogRef}>
+   <button className='icon dialog-btn'>
     <i className="material-symbols-outlined" onClick={closeModal}>close</i>
    </button>
-   <BookPreview book={book} />
-
-
+   <BookPreview book={book} is="details" updateBook={updateBook} onAction={onAction} isEditable={isEditable} />
   </dialog>
  )
 }
