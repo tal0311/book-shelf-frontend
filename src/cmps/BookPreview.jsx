@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { userService } from '../services/user.service';
 import { shelfService } from '../services/shelf.service.local';
 import useEditable from '../customHooks/useEditable';
+import { useNavigate, useParams } from 'react-router-dom'
 
 
 const BookPreview = ({ book, is, onAction, updateBook, isEditable }) => {
@@ -29,6 +30,11 @@ const BookPreview = ({ book, is, onAction, updateBook, isEditable }) => {
     window.open(book.link, '_blank', toWindowOptionsString(windowOptions));
   }
 
+  const navigate = useNavigate()
+  const goToDetails = () => {
+    navigate(`book/${book.bookId}`)
+  }
+
 
   const isElEditable = is === 'details' ? isEditable : false
 
@@ -40,7 +46,7 @@ const BookPreview = ({ book, is, onAction, updateBook, isEditable }) => {
 
   if (!book) return <div>Loading...</div>
   return (
-    <article className={`book-preview grid ${is}`}>
+    <article onClick={goToDetails} className={`book-preview grid ${is}`}>
       <img height={is === 'details' ? 400 : 200} src={book.imgUrl} alt={book.title} />
       <h4 {...editableAttrs} className='title' >{book.title}</h4>
       <p {...editableAttrs} className='des'>{book.desc}</p>
