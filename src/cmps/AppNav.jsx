@@ -1,35 +1,43 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const AppNav = () => {
- const [placeHolder, setPlaceHolder] = useState(null)
+ const [placeHolder, setPlaceHolder] = useState('')
 
 
- const navActions = [
+
+ // let navActions = 
+ const [navActions, setNavActions] = useState([
   {
    icon: 'frame_inspect',
-   action: 'search'
+   action: 'search',
+   isSelected: false
   },
   {
    icon: 'add_box',
-   action: 'add-book'
+   action: 'add-book',
+   isSelected: false
   },
   {
    icon: 'library_add',
-   action: 'add-shelf'
+   action: 'add-shelf',
+   isSelected: false
   },
   {
    icon: 'explore',
-   action: 'explore'
+   action: 'explore',
+   isSelected: false
   }
- ]
+ ])
 
  const [isDirty, setIsDirty] = useState(false)
  const handleInput = ({ target: { value } }) => {
   value.length > 0 ? setIsDirty(true) : setIsDirty(false)
  }
 
+
+ let currentAction = null
  const onAction = (action) => {
   const opts = {
    'search': 'Search for a book',
@@ -37,15 +45,33 @@ const AppNav = () => {
    'add-shelf': 'Add a shelf',
    'explore': 'Witch topic would you like to explore?'
   }
-  // if (action === 'explore') {
-  //  window.location.replace(`${window.location.origin}/explore`)
-  //  return
-  // }
   if (opts[action] === placeHolder) {
+   currentAction = action
+   updateNavActions()
    setPlaceHolder(null)
    return
   }
+  currentAction = action
+  updateNavActions()
   setPlaceHolder(opts[action])
+ }
+
+ useEffect(() => {
+  if (!placeHolder) {
+   updateNavActions()
+  }
+ }, [placeHolder])
+
+ const updateNavActions = () => {
+  const newActions = navActions.map(navAction => {
+   if (navAction.action === currentAction) navAction.isSelected = !navAction.isSelected
+   else navAction.isSelected = false
+   return navAction
+  })
+
+  setNavActions(newActions)
+
+
  }
 
  return (
@@ -61,9 +87,9 @@ const AppNav = () => {
     </section>}
 
    {navActions.map((navAction, idx) => {
-    const { action, icon } = navAction
+    const { action, icon, isSelected } = navAction
     return (
-     <button onClick={() => onAction(action)} className='icon' key={idx}>
+     <button onClick={() => onAction(action)} className={`icon ${isSelected ? 'selected' : ''}`} key={idx}>
       <i className="material-symbols-outlined">{icon}</i>
      </button>
     )

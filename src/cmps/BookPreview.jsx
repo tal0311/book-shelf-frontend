@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import { userService } from '../services/user.service';
 import { shelfService } from '../services/shelf.service.local';
-import useEditable from '../customHooks/useEditable';
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 
 const BookPreview = ({ book, is, onAction, updateBook, isEditable }) => {
@@ -22,12 +21,13 @@ const BookPreview = ({ book, is, onAction, updateBook, isEditable }) => {
     menubar: false,
   };
 
-  const toWindowOptionsString = (options) => {
+  const getWindowOptionsString = (options) => {
     return Object.keys(options).map(key => `${key}=${options[key]}`).join(',');
   };
 
-  const goToLink = () => {
-    window.open(book.link, '_blank', toWindowOptionsString(windowOptions));
+  const goToLink = (ev) => {
+    ev.stopPropagation()
+    window.open(book.link, '_blank', getWindowOptionsString(windowOptions));
   }
 
   const navigate = useNavigate()
