@@ -121,6 +121,27 @@ function getImg(url) {
     return new URL(url, import.meta.url).href
 }
 
+function openPopUp(url) {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    const windowOptions = {
+        width: width,
+        height: height,
+        top: 50,
+        left: width / 2,
+        resizable: true,
+        scrollbars: true,
+        toolbar: false,
+        location: false,
+        status: false,
+        menubar: false,
+    };
+    window.open(url, '_blank', _getWindowOptionsString(windowOptions));
+}
+function _getWindowOptionsString(options) {
+    return Object.keys(options).map(key => `${key}=${options[key]}`).join(',');
+};
+
 
 
 export const utilService = {
@@ -139,7 +160,8 @@ export const utilService = {
     setConsoleData,
     isMobile,
     getImg,
-    getDomainName
+    getDomainName,
+    openPopUp
 }
 
 window.$utils = utilService

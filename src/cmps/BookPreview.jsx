@@ -6,28 +6,9 @@ import { useNavigate } from 'react-router-dom'
 
 const BookPreview = ({ book, is, onAction, updateBook, isEditable }) => {
 
-  const width = window.innerWidth;
-  const height = window.innerHeight;
-  const windowOptions = {
-    width: width,
-    height: height,
-    top: 50,
-    left: width / 2,
-    resizable: true,
-    scrollbars: true,
-    toolbar: false,
-    location: false,
-    status: false,
-    menubar: false,
-  };
-
-  const getWindowOptionsString = (options) => {
-    return Object.keys(options).map(key => `${key}=${options[key]}`).join(',');
-  };
-
   const goToLink = (ev) => {
     ev.stopPropagation()
-    window.open(book.link, '_blank', getWindowOptionsString(windowOptions));
+    $utils.openPopUp(book.link)
   }
 
   const navigate = useNavigate()
