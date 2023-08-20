@@ -32,12 +32,18 @@ const BookPreview = ({ book, is, onAction, updateBook, isEditable }) => {
 
   const isElEditable = is === 'details' ? isEditable : false
 
+  const editableAttrs = {
+    suppressContentEditableWarning: true,
+    contentEditable: isElEditable,
+    onBlur: updateBook
+  }
+
   if (!book) return <div>Loading...</div>
   return (
     <article className={`book-preview grid ${is}`}>
       <img height={is === 'details' ? 400 : 200} src={book.imgUrl} alt={book.title} />
-      <h4 suppressContentEditableWarning="true" contentEditable={isElEditable} className='title' onBlur={updateBook}>{book.title}</h4>
-      <p suppressContentEditableWarning="true" contentEditable={isElEditable} className='des' onBlur={updateBook}>{book.desc}</p>
+      <h4 {...editableAttrs} className='title' >{book.title}</h4>
+      <p {...editableAttrs} className='des'>{book.desc}</p>
       <div className="actions-container grid">
 
         <button className="icon" onClick={goToLink}>
