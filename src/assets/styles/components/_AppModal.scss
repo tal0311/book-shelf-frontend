@@ -12,6 +12,10 @@
  border-radius: $br;
 
  .search-results-list {
+  .modal-loader {
+   place-content: center;
+   height: 80vh;
+  }
   .item-preview {
    display: grid;
    grid-auto-flow: column;

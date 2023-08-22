@@ -5,7 +5,7 @@
  border-radius: 0.6rem;
 
  &::backdrop {
-  background: #000000b0;
+  background: $bd-dark;
  }
  .dialog-btn {
   @include dialog-btn(light);
