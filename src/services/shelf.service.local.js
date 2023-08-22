@@ -65,7 +65,7 @@ async function getItemsBySearchResults(searchTerm) {
             if (regex.test(book.title)
                 || regex.test(book.subtitle)
                 || regex.test(book.authors)) {
-                items.push(_createSearchItem(book, 'book'))
+                items.push(_createSearchItem(book, 'book', shelf._id))
             }
         })
 
@@ -76,13 +76,14 @@ async function getItemsBySearchResults(searchTerm) {
     // return items
 }
 
-function _createSearchItem(item, type) {
+function _createSearchItem(item, type, shelfId = null) {
     return {
         _id: type == 'book' ? item.bookId : item._id,
         title: item.title,
         desc: item.desc || '(no description)',
         type,
-        imgUrl: item.imgUrl
+        imgUrl: item.imgUrl,
+        shelfId
     }
 }
 

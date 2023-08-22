@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { shelfService } from '../services/shelf.service.local.js'
 import AppLoader from './AppLoader.jsx'
+import { useNavigate } from 'react-router-dom'
 
 
-const SearchResList = ({ data }) => {
+const SearchResList = ({ data, closeModal }) => {
  const [filteredItems, setFilteredItems] = useState(null)
 
  useEffect(() => {
@@ -16,6 +17,19 @@ const SearchResList = ({ data }) => {
  }
  // TODO: dynamic loader by Cmp
 
+ const navigate = useNavigate()
+ const navigateTo = (ev, item) => {
+  ev.stopPropagation()
+  console.log(item);
+  if (item.type === 'shelf') {
+   navigate(`/shelf/${item._id}`)
+   closeModal()
+  }
+  if (item.type === 'book') {
+   navigate(`/shelf/${item.shelfId}/book/${item._id}`)
+   closeModal()
+  }
+ }
 
  return (
   <section className='search-results-list'>
@@ -26,7 +40,7 @@ const SearchResList = ({ data }) => {
    {
     filteredItems && filteredItems.map(item => {
      return (
-      <article className='item-preview' key={$utils.makeId()}>
+      <article onClick={(ev) => navigateTo(ev, item)} className='item-preview' key={$utils.makeId()}>
        <div className="info-container">
         <h2>{item.title}</h2>
         <p>{item.desc}</p>

@@ -33,7 +33,7 @@ const AppModal = () => {
  return (
   <dialog ref={modalRef} className={`app-modal ${modal?.type ? modal.type : 'loading'}`}>
 
-   {modal && <DynamicCmp modal={modal} />}
+   {modal && <DynamicCmp modal={modal} closeModal={closeModal} />}
    <button className='dialog-btn icon' onClick={closeModal}>
     <i className="material-symbols-outlined" >close</i>
    </button>
@@ -42,13 +42,13 @@ const AppModal = () => {
 };
 
 
-const DynamicCmp = ({ modal }) => {
+const DynamicCmp = ({ modal, closeModal }) => {
  function getModalCmp() {
   const modalTypes = {
-   search: <SearchResList data={modal?.data} />,
-   'add-book': <AddBook data={modal?.data} />,
-   'add-shelf': <AddShelf data={modal?.data} />,
-   explore: <Explore data={modal?.data} />
+   search: <SearchResList data={modal?.data} closeModal={closeModal} />,
+   'add-book': <AddBook data={modal?.data} closeModal={closeModal} />,
+   'add-shelf': <AddShelf data={modal?.data} closeModal={closeModal} />,
+   explore: <Explore data={modal?.data} closeModal={closeModal} />
   };
   return modalTypes[modal.type]
  }

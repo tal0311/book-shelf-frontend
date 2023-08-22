@@ -42,7 +42,7 @@ const BookDetails = () => {
 
  const updateBook = async (ev) => {
   ev.stopPropagation()
-  const { innerText, innerHTML, className } = ev.target
+  const { innerText, className } = ev.target
 
   const field = className === 'title' ? 'title' : 'desc'
   const newBook = { ...book, [field]: innerText }
