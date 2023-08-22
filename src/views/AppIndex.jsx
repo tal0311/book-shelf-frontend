@@ -11,6 +11,7 @@ import {
 import { eventBus, SHOW_MSG, showUserMsg } from '../services/event-bus.service.js'
 
 import ShelvesList from '../cmps/ShelvesList'
+import AppLoader from '../cmps/AppLoader'
 
 const AppIndex = () => {
  const [shelves, setShelves] = useState(null)
@@ -61,6 +62,7 @@ const AppIndex = () => {
 
 
 
+ if (!shelves) return <AppLoader loaderType='standing-books' />
  return (
   <>
    <ShelvesList onAction={onAction} updateShelf={updateShelf} shelves={shelves} />

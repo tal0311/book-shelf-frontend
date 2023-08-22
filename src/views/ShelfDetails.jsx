@@ -5,6 +5,7 @@ import { Outlet, useParams } from 'react-router-dom'
 import { shelfService } from '../services/shelf.service.local'
 import BookPreview from './../cmps/BookPreview'
 import BookList from './../cmps/BookList'
+import AppLoader from '../cmps/AppLoader'
 
 const ShelfDetails = () => {
   const [shelf, setShelf] = useState(null)
@@ -17,8 +18,6 @@ const ShelfDetails = () => {
 
   useEffect(() => {
     if (!shelf) return
-    console.log('shelf changed', shelf)
-
   }, [shelf])
   const loadShelf = async () => {
     const shelf = await shelfService.getById(params.shelfId).catch((err) => {
@@ -30,7 +29,7 @@ const ShelfDetails = () => {
   }
 
   console.log(params)
-  if (!shelf) return <div>Loading...</div>
+  if (!shelf) return <AppLoader loaderType='book-stack' />
   return (
     <div>
       <h2>Shelf <span>{shelf.title}</span></h2>
