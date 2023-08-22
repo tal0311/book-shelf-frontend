@@ -1,9 +1,35 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { shelfService } from '../services/shelf.service.local.js'
+
 
 const SearchResList = ({ data }) => {
- console.log('data in serch', data);
+ const [filteredItems, setFilteredItems] = useState(null)
+
+
+ useEffect(() => {
+  getItemsBySearch()
+ }, [])
+
+ async function getItemsBySearch() {
+  const items = await shelfService.getItemsBySearchResults(data)
+  setFilteredItems(items)
+ }
+
+
  return (
-  <div>SearchResList</div>
+  <section className='search-results-list'>
+   {filteredItems && filteredItems.map(item => {
+    return (
+     <article className='item-preview' key={$utils.makeId()}>
+      <div className="info-container">
+       <h2>{item.title}</h2>
+       <p>{item.desc}</p>
+      </div>
+      <img src={item.imgUrl} alt={item.title} />
+     </article>
+    )
+   })}
+  </section>
  )
 }
 

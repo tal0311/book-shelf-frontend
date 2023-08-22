@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { eventBus } from '../services/event-bus.service'
 
-const AppNav = ({ navActions: onNavAction }) => {
+const AppNav = () => {
  const [placeHolder, setPlaceHolder] = useState('')
  const [inputText, setInputText] = useState({ txt: '', action: '' })
  // let navActions = 
@@ -75,10 +75,7 @@ const AppNav = ({ navActions: onNavAction }) => {
 
  function handleSubmit() {
   if (!isDirty) return
-  if (inputText.action === 'search') {
-   console.log('inputText.txt', inputText.txt);
-   eventBus.emit('openModal', { type: 'search', data: inputText.txt })
-  }
+  eventBus.emit('openModal', { type: inputText.action, data: inputText.txt })
   resetState()
  }
 

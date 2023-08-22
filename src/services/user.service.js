@@ -100,11 +100,11 @@ function getLoggedinUser() {
 }
 
 
-; (async () => {
-    utilService.saveToStorage(USER_DB, user)
-    login(user[0])
+// ; (async () => {
+//     utilService.saveToStorage(USER_DB, user)
+//     login(user[0])
 
-})()
+// })()
 
 
 

@@ -16,7 +16,7 @@ export const shelfService = {
     getBookById,
     removeBook,
     saveBook,
-
+    getItemsBySearchResults
 }
 window.shelfService = shelfService
 
@@ -51,6 +51,39 @@ async function removeBook(bookId, shelfId) {
     const shelf = await storageService.get(STORAGE_KEY, shelfId)
     shelf.books = shelf.books.filter(book => book.bookId !== bookId)
     await storageService.put(STORAGE_KEY, shelf)
+}
+
+async function getItemsBySearchResults(searchTerm) {
+    const items = []
+    const shelves = await query()
+    const regex = new RegExp(searchTerm, 'i')
+    shelves.forEach(shelf => {
+        if (regex.test(shelf.title) || regex.test(shelf.desc)) {
+            items.push(_createSearchItem(shelf, 'shelf'))
+        }
+        shelf.books.forEach(book => {
+            if (regex.test(book.title)
+                || regex.test(book.subtitle)
+                || regex.test(book.authors)) {
+                items.push(_createSearchItem(book, 'book'))
+            }
+        })
+
+    });
+
+    return items
+
+    // return items
+}
+
+function _createSearchItem(item, type) {
+    return {
+        _id: type == 'book' ? item.bookId : item._id,
+        title: item.title,
+        desc: item.desc || '(no description)',
+        type,
+        imgUrl: item.imgUrl
+    }
 }
 
 async function saveBook(book, shelfId) {
@@ -92,6 +125,8 @@ async function addCarMsg(shelfId, txt) {
 
     return msg
 }
+
+
 
 function getEmptyCar() {
     return {

@@ -5,7 +5,7 @@ import ItemActions from './ItemActions'
 
 const ShelfPreview = ({ shelf, onAction, updateShelf }) => {
  const [isEditable, setEditable] = useState(false)
- const { _id, title, description, createdAt, imgUrl, books } = shelf
+ const { _id, title, desc, createdAt, imgUrl, books } = shelf
  const navigate = useNavigate()
 
  const navigateTo = (shelfId) => {
@@ -28,7 +28,7 @@ const ShelfPreview = ({ shelf, onAction, updateShelf }) => {
    updateShelf({ ...shelf, title: ev.target.innerText })
   }
   if (ev.target.nodeName.toLowerCase() === 'p') {
-   updateShelf({ ...shelf, description: ev.target.innerText })
+   updateShelf({ ...shelf, desc: ev.target.innerText })
   }
 
  }
@@ -39,7 +39,7 @@ const ShelfPreview = ({ shelf, onAction, updateShelf }) => {
  return (
   <article className='shelf-preview grid-item' onClick={() => navigateTo(_id)} key={_id}>
    <h2 onBlur={updateItem} contentEditable={isEditable}>{title}</h2>
-   <p contentEditable={isEditable}>{description}</p>
+   <p contentEditable={isEditable}>{desc}</p>
    <p >{createdAt}</p>
    <small><span>Items on this shelf</span> {books.length}</small>
    <img src={imgUrl} alt="" />

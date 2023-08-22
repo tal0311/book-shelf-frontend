@@ -15,12 +15,10 @@ const AppModal = () => {
   };
  }, []);
 
+ const modalRef = useRef(null);
  useEffect(() => {
   if (modal) openModal();
  }, [modal]);
-
-
- const modalRef = useRef(null);
 
  const openModal = () => {
   modalRef.current.showModal();
@@ -31,17 +29,23 @@ const AppModal = () => {
   setModal(null);
  };
 
- const modalTypes = {
-  search: <SearchResList data={modal?.data} />,
-  'add-book': <AddBook data={modal?.data} />,
-  'add-shelf': <AddShelf data={modal?.data} />,
-  explore: <Explore data={modal?.data} />
- };
+
+ function getModalCmp() {
+  const modalTypes = {
+   search: <SearchResList data={modal?.data} />,
+   'add-book': <AddBook data={modal?.data} />,
+   'add-shelf': <AddShelf data={modal?.data} />,
+   explore: <Explore data={modal?.data} />
+  };
+  return modalTypes[modal.type]
+ }
 
  return (
-  <dialog ref={modalRef} className={`app-modal ${modal?.data}`}>
-   {modal && modalTypes[modal.type]}
-   <button onClick={closeModal}>x</button>
+  <dialog ref={modalRef} className={`app-modal ${modal?.type}`}>
+   {modal && getModalCmp()}
+   <button className='dialog-btn icon' onClick={closeModal}>
+    <i className="material-symbols-outlined" >close</i>
+   </button>
   </dialog>
  );
 };
