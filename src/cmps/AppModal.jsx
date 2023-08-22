@@ -6,18 +6,18 @@ import Explore from './../views/AppExplore.jsx';
 import { eventBus } from '../services/event-bus.service.js';
 
 const AppModal = () => {
- const [modalType, setModalType] = useState(null);
+ const [modal, setModal] = useState(null);
 
  useEffect(() => {
-  eventBus.on('openModal', setModalType);
+  eventBus.on('openModal', setModal);
   return () => {
    console.log('clenaing up');
   };
  }, []);
 
  useEffect(() => {
-  if (modalType) openModal();
- }, [modalType]);
+  if (modal) openModal();
+ }, [modal]);
 
 
  const modalRef = useRef(null);
@@ -28,18 +28,19 @@ const AppModal = () => {
 
  const closeModal = () => {
   modalRef.current.close();
+  setModal(null);
  };
 
  const modalTypes = {
-  search: <SearchResList data={modalType?.data} />,
-  'add-book': <AddBook data={modalType?.data} />,
-  'add-shelf': <AddShelf data={modalType?.data} />,
-  explore: <Explore data={modalType?.data} />
+  search: <SearchResList data={modal?.data} />,
+  'add-book': <AddBook data={modal?.data} />,
+  'add-shelf': <AddShelf data={modal?.data} />,
+  explore: <Explore data={modal?.data} />
  };
 
  return (
-  <dialog ref={modalRef} className="app-modal">
-   {modalType && modalTypes[modalType.type]}
+  <dialog ref={modalRef} className={`app-modal ${modal?.data}`}>
+   {modal && modalTypes[modal.type]}
    <button onClick={closeModal}>x</button>
   </dialog>
  );

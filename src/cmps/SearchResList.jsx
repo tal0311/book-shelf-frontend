@@ -1,7 +1,7 @@
 import React from 'react'
 
-const SearchResList = (props) => {
- console.log('data in serch', props);
+const SearchResList = ({ data }) => {
+ console.log('data in serch', data);
  return (
   <div>SearchResList</div>
  )
