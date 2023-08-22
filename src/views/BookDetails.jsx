@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 
 import { shelfService } from '../services/shelf.service.local'
 import BookPreview from '../cmps/BookPreview'
+import AppLoader from '../cmps/AppLoader'
 
 
 
@@ -14,11 +15,12 @@ const BookDetails = () => {
 
  useEffect(() => {
   loadBook()
+  dialogRef.current.showModal()
  }, [])
 
  const loadBook = async () => {
   const book = await shelfService.getBookById(bookId, shelfId)
-  if (book) dialogRef.current.showModal()
+  // if (book) dialogRef.current.showModal()
   setBook(book)
  }
 
@@ -55,7 +57,8 @@ const BookDetails = () => {
    <button className='icon dialog-btn'>
     <i className="material-symbols-outlined" onClick={closeModal}>close</i>
    </button>
-   <BookPreview book={book} is="details" updateBook={updateBook} onAction={onAction} isEditable={isEditable} />
+   {!book && <AppLoader loaderType='book-light' />}
+   {book && <BookPreview book={book} is="details" updateBook={updateBook} onAction={onAction} isEditable={isEditable} />}
   </dialog>
  )
 }
