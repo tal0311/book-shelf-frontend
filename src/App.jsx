@@ -2,12 +2,15 @@ import React, { useEffect, useState } from "react";
 import "./assets/styles/styles.scss";
 // to set the global $error object
 import { errorService } from './services/error.service'
+import { eventBus, showSuccessMsg, showUserMsg } from "./services/event-bus.service";
 import { useLocation } from 'react-router-dom'
 import RouterView from './cmps/RouterView.jsx'
 import AppNav from './cmps/AppNav.jsx'
 import AppHeader from './cmps/AppHeader.jsx'
 import UserMsg from "./cmps/UserMsg";
-import { eventBus, showSuccessMsg, showUserMsg } from "./services/event-bus.service";
+import AppModal from "./cmps/AppModal";
+import { useDispatch } from 'react-redux'
+import { setFilterBy } from './store/actions/items.actions.js'
 
 
 
@@ -38,6 +41,7 @@ const App = () => {
         <RouterView />
       </div>
       {isNavDisplayed && < AppNav />}
+      <AppModal />
       <UserMsg />
     </section>
 

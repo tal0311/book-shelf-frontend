@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { eventBus } from '../services/event-bus.service'
 
-const AppNav = () => {
+const AppNav = ({ navActions: onNavAction }) => {
  const [placeHolder, setPlaceHolder] = useState('')
-
-
-
+ const [inputText, setInputText] = useState({ txt: '', action: '' })
  // let navActions = 
  const [navActions, setNavActions] = useState([
   {
@@ -34,13 +33,14 @@ const AppNav = () => {
  const [isDirty, setIsDirty] = useState(false)
  const handleInput = ({ target: { value } }) => {
   value.length > 0 ? setIsDirty(true) : setIsDirty(false)
+  setInputText((prevState) => ({ ...prevState, txt: value }))
  }
 
 
  let currentAction = null
  const onAction = (action) => {
   const opts = {
-   'search': 'Search for a book',
+   'search': 'Search for a book shelf or title',
    'add-book': 'Add a book',
    'add-shelf': 'Add a shelf',
    'explore': 'Witch topic would you like to explore?'
@@ -54,6 +54,7 @@ const AppNav = () => {
   currentAction = action
   updateNavActions()
   setPlaceHolder(opts[action])
+  setInputText((prevState) => ({ ...prevState, action }))
  }
 
  useEffect(() => {
@@ -70,8 +71,22 @@ const AppNav = () => {
   })
 
   setNavActions(newActions)
+ }
 
+ function handleSubmit() {
+  if (!isDirty) return
+  if (inputText.action === 'search') {
+   console.log('inputText.txt', inputText.txt);
+   eventBus.emit('openModal', { type: 'search', data: inputText.txt })
+  }
+  resetState()
+ }
 
+ const resetState = () => {
+  setInputText({ txt: '', action: '' })
+  setIsDirty(false)
+  setPlaceHolder(null)
+  updateNavActions()
  }
 
  return (
@@ -80,8 +95,8 @@ const AppNav = () => {
 
    {placeHolder &&
     <section className='search grid'>
-     <input onChange={handleInput} type="search" name="" id="" placeholder={placeHolder} />
-     <button className={isDirty ? 'dirty' : ''}>
+     <input onChange={handleInput} value={inputText.txt} type="search" name="" id="" placeholder={placeHolder} />
+     <button onClick={handleSubmit} className={isDirty ? 'dirty' : ''}>
       <i className="material-symbols-outlined">check_circle</i>
      </button>
     </section>}
