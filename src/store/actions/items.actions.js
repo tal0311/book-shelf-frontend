@@ -1,5 +1,5 @@
 import { shelfService } from "../../services/shelf.service.local"
-import { REMOVE_ITEM, SET_FILTER_BY, UPDATE_ITEM, ADD_ITEM, SET_ITEMS } from './../reducers/items.reducer'
+import { REMOVE_ITEM, SET_FILTER_BY, UPDATE_ITEM, ADD_ITEM, SET_ITEMS, GET_SHELVES_LIST } from './../reducers/items.reducer'
 
 export function loadItems() {
 
@@ -47,6 +47,16 @@ export function setFilterBy(filterBy) {
     return (dispatch) => {
         try {
             dispatch({ type: SET_FILTER_BY, filterBy: { ...filterBy } })
+        } catch (err) {
+            console.error('err:', err)
+        }
+    }
+}
+export function getTopics() {
+
+    return (dispatch) => {
+        try {
+            dispatch({ type: GET_SHELVES_LIST })
         } catch (err) {
             console.error('err:', err)
         }

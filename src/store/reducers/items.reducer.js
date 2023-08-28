@@ -3,13 +3,15 @@ export const ADD_ITEM = 'ADD_ITEM'
 export const REMOVE_ITEM = 'REMOVE_ITEM'
 export const UPDATE_ITEM = 'UPDATE_ITEM'
 export const SET_FILTER_BY = 'SET_FILTER_BY'
+export const GET_SHELVES_LIST = 'GET_SHELVES_LIST'
 
 
 const INITIAL_STATE = {
     items: null,
     filterBy: {
 
-    }
+    },
+    shelvesTopics: []
 }
 
 
@@ -40,6 +42,11 @@ export function itemReducer(state = INITIAL_STATE, action) {
             return {
                 ...state,
                 filterBy: { ...action.filterBy }
+            }
+        case GET_SHELVES_LIST:
+            return {
+                ...state,
+                shelvesTopics: state.items.map(item => item.title)
             }
 
         default:

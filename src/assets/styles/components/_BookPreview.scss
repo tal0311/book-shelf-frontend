@@ -3,9 +3,20 @@
  padding: 0.5rem;
  border-radius: 0.8rem;
 
- img {
-  border-radius: 0.6rem;
-  aspect-ratio: 1/1;
+ .img-container {
+  position: relative;
+  .main-img {
+   border-radius: 0.6rem;
+   aspect-ratio: 1/1;
+   object-fit: cover;
+  }
+  .fav-img {
+   height: 1.2rem;
+   width: 1.2rem;
+   position: absolute;
+   top: 0.5rem;
+   right: 0.5rem;
+  }
  }
 
  &.list {
