@@ -36,6 +36,13 @@ const BookPreview = ({ book, is, onAction, updateBook, isEditable }) => {
         <button className="icon" onClick={goToLink}>
           <i className="material-symbols-outlined">open_in_new</i>
         </button>
+        {is === 'add-book' &&
+          <button onClick={onAction} className='icon'>
+            <i className="material-symbols-outlined">
+              save
+            </i>
+          </button>
+        }
         {is === 'details' &&
           <>
             <button className='icon'>

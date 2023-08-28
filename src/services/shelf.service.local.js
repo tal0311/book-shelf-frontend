@@ -3,6 +3,8 @@ import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 import shelves from './../../data/shelf.json' assert {type: 'json'}
+import { httpService } from './http.service.js'
+import axios from 'axios'
 
 const STORAGE_KEY = 'shelf'
 
@@ -16,7 +18,8 @@ export const shelfService = {
     getBookById,
     removeBook,
     saveBook,
-    getItemsBySearchResults
+    getItemsBySearchResults,
+    getBookMetadata
 }
 window.shelfService = shelfService
 
@@ -37,20 +40,8 @@ function getById(shelfId) {
     return storageService.get(STORAGE_KEY, shelfId)
 }
 
-async function getBookById(bookId, shelfId) {
-    const shelf = await storageService.get(STORAGE_KEY, shelfId)
-    console.debug('♠️ ~ file: shelf.service.local.js:39 ~ getBookById ~ shelf:', shelf)
-    return shelf.books.find(book => book.bookId === bookId)
-}
-
 async function remove(shelfId) {
     await storageService.remove(STORAGE_KEY, shelfId)
-}
-
-async function removeBook(bookId, shelfId) {
-    const shelf = await storageService.get(STORAGE_KEY, shelfId)
-    shelf.books = shelf.books.filter(book => book.bookId !== bookId)
-    await storageService.put(STORAGE_KEY, shelf)
 }
 
 async function getItemsBySearchResults(searchTerm) {
@@ -72,8 +63,6 @@ async function getItemsBySearchResults(searchTerm) {
     });
 
     return items
-
-    // return items
 }
 
 function _createSearchItem(item, type, shelfId = null) {
@@ -85,6 +74,30 @@ function _createSearchItem(item, type, shelfId = null) {
         imgUrl: item.imgUrl,
         shelfId
     }
+}
+
+async function save(shelf) {
+    var savedShelf
+    if (shelf._id) {
+        savedShelf = await storageService.put(STORAGE_KEY, shelf)
+    } else {
+        // Later, owner is set by the backend
+        shelf.owner = userService.getLoggedinUser()
+        savedShelf = await storageService.post(STORAGE_KEY, shelf)
+    }
+    return savedShelf
+}
+
+async function removeBook(bookId, shelfId) {
+    const shelf = await storageService.get(STORAGE_KEY, shelfId)
+    shelf.books = shelf.books.filter(book => book.bookId !== bookId)
+    await storageService.put(STORAGE_KEY, shelf)
+}
+
+async function getBookById(bookId, shelfId) {
+    const shelf = await storageService.get(STORAGE_KEY, shelfId)
+    console.debug('♠️ ~ file: shelf.service.local.js:39 ~ getBookById ~ shelf:', shelf)
+    return shelf.books.find(book => book.bookId === bookId)
 }
 
 async function saveBook(book, shelfId) {
@@ -99,17 +112,10 @@ async function saveBook(book, shelfId) {
     await storageService.put(STORAGE_KEY, shelf)
 }
 
-async function save(shelf) {
-    var savedShelf
-    if (shelf._id) {
-        savedShelf = await storageService.put(STORAGE_KEY, shelf)
-    } else {
-        // Later, owner is set by the backend
-        shelf.owner = userService.getLoggedinUser()
-        savedShelf = await storageService.post(STORAGE_KEY, shelf)
-    }
-    return savedShelf
+async function getBookMetadata(url) {
+    return axios.get('//localhost:3030/api/book/meta?url=' + url).then(res => res.data)
 }
+
 
 async function addCarMsg(shelfId, txt) {
     // Later, this is all done by the backend

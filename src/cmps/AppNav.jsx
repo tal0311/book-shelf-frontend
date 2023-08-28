@@ -6,7 +6,6 @@ import { eventBus } from '../services/event-bus.service'
 const AppNav = () => {
  const [placeHolder, setPlaceHolder] = useState('')
  const [inputText, setInputText] = useState({ txt: '', action: '' })
- // let navActions = 
  const [navActions, setNavActions] = useState([
   {
    icon: 'frame_inspect',
@@ -69,7 +68,6 @@ const AppNav = () => {
    else navAction.isSelected = false
    return navAction
   })
-
   setNavActions(newActions)
  }
 
@@ -89,7 +87,6 @@ const AppNav = () => {
  return (
 
   <div className='app-nav grid'>
-
    {placeHolder &&
     <section className='search grid'>
      <input onChange={handleInput} value={inputText.txt} type="search" name="" id="" placeholder={placeHolder} />
@@ -101,7 +98,8 @@ const AppNav = () => {
    {navActions.map((navAction, idx) => {
     const { action, icon, isSelected } = navAction
     return (
-     <button onClick={() => onAction(action)} className={`icon ${isSelected ? 'selected' : ''}`} key={idx}>
+     <button onClick={() => onAction(action)}
+      className={`icon ${isSelected ? 'selected' : ''}`} key={idx}>
       <i className="material-symbols-outlined">{icon}</i>
      </button>
     )
