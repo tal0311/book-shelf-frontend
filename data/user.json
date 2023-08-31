@@ -1,20 +1,11 @@
 [
  {
-  "_id": "u101",
-  "fullname": "Tal Amit",
-  "username": "tal.amit",
-  "email": "tal.amit0311@gmail.com",
-  "password": "1234",
-  "imgUrl": "https://res.cloud"
-
- },
- {
   "_id": "u102",
   "fullname": "Al Tamit",
   "username": "al.amit",
   "email": "al.tmit@gmail.com",
   "password": "1234",
-  "imgUrl": "https://res.cloud"
+  "imgUrl": "https://res.cloudinary.com/tal-amit-dev/image/upload/v1679773600/Instagram/WhatsApp_Image_2023-03-25_at_22.42.55_gh0eyd.jpg"
 
  }
 ]

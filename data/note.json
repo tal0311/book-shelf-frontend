@@ -1,0 +1,107 @@
+[
+ {
+  "ownerId": "64f0647eeb12fb06c61ae8e6",
+  "notifications": [
+   {
+    "noteId": "n101",
+    "noteType": "update",
+    "createdAt": 1691922312831,
+    "updatedTarget": {
+     "title": "Updated Title 1",
+     "desc": "Updated Description 1",
+     "imgUrl": "http://www.example1.com"
+    }
+   },
+   {
+    "noteId": "n102",
+    "noteType": "create",
+    "createdAt": 1691922312832,
+    "createdTarget": {
+     "title": "New Shelf Created",
+     "desc": "A new shelf has been created.",
+     "imgUrl": "http://www.example2.com"
+    }
+   },
+   {
+    "noteId": "n103",
+    "noteType": "delete",
+    "createdAt": 1691922312833,
+    "deletedTarget": {
+     "title": "Deleted Book",
+     "desc": "A book has been deleted.",
+     "imgUrl": "http://www.example3.com"
+    }
+   },
+   {
+    "noteId": "n104",
+    "noteType": "create",
+    "createdAt": 1691922312834,
+    "createdTarget": {
+     "title": "New Book Created",
+     "desc": "A new book has been added.",
+     "imgUrl": "http://www.example4.com"
+    }
+   },
+   {
+    "noteId": "n105",
+    "noteType": "update",
+    "createdAt": 1691922312835,
+    "updatedTarget": {
+     "title": "Updated Title 2",
+     "desc": "Updated Description 2",
+     "imgUrl": "http://www.example5.com"
+    }
+   },
+   {
+    "noteId": "n106",
+    "noteType": "delete",
+    "createdAt": 1691922312836,
+    "deletedTarget": {
+     "title": "Deleted Shelf",
+     "desc": "A shelf has been deleted.",
+     "imgUrl": "http://www.example6.com"
+    }
+   },
+   {
+    "noteId": "n107",
+    "noteType": "update",
+    "createdAt": 1691922312837,
+    "updatedTarget": {
+     "title": "Updated Title 3",
+     "desc": "Updated Description 3",
+     "imgUrl": "http://www.example7.com"
+    }
+   },
+   {
+    "noteId": "n108",
+    "noteType": "create",
+    "createdAt": 1691922312838,
+    "createdTarget": {
+     "title": "New Book Created",
+     "desc": "A new book has been added.",
+     "imgUrl": "http://www.example8.com"
+    }
+   },
+   {
+    "noteId": "n109",
+    "noteType": "update",
+    "createdAt": 1691922312839,
+    "updatedTarget": {
+     "title": "Updated Title 4",
+     "desc": "Updated Description 4",
+     "imgUrl": "http://www.example9.com"
+    }
+   },
+   {
+    "noteId": "n110",
+    "noteType": "delete",
+    "createdAt": 1691922312840,
+    "deletedTarget": {
+     "title": "Deleted Book",
+     "desc": "A book has been deleted.",
+     "imgUrl": "http://www.example10.com"
+    }
+   }
+  ]
+ }
+]
