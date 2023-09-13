@@ -1,248 +1,137 @@
 [
  {
-  "_id": "s101",
-  "title": "Frontend",
-  "desc": "my frontend shelf",
-  "createdAt": 1691922312831,
-  "imgUrl": "https://source.unsplash.com/random/400x400/?react",
-  "owner": {
-   "ownerId": "u101",
-   "fullname": "Tal Amit",
-   "username": "tal.amit",
-   "email": "tal.amit0311@gmail.com",
-   "imgUrl": "https://res.cloud"
-  },
+  "_id": "64f06fc7233adeb1ac3ef8eb",
+  "title": "Web Development",
+  "desc": "Explore the world of Web Development",
+  "createdAt": 1691922312831.0,
+  "imgUrl": "https://source.unsplash.com/random/400x400/?webdevelopment",
+  "ownerId": "64f0647eeb12fb06c61ae8e6",
   "books": [
    {
     "bookId": "b101",
-    "title": "AngularJS",
-    "desc": "som desc about AngularJS",
-    "link": "http://www.angularjs.org",
-    "imgUrl": "https://source.unsplash.com/random/400x400/?city",
-    "createdAt": 1691922312831
+    "title": "HTML5 and CSS3",
+    "desc": "Master the fundamentals of web design.",
+    "link": "http://www.example.com/html",
+    "imgUrl": "https://source.unsplash.com/random/400x400/?html",
+    "createdAt": 1691922312831.0
    },
    {
     "bookId": "b102",
-    "title": "ReactJS",
-    "desc": "som desc about AngularJS",
-    "link": "http://www.angularjs.org",
-    "imgUrl": "https://source.unsplash.com/random/400x400/?home",
-    "createdAt": 1691922312831
+    "title": "JavaScript Basics",
+    "desc": "Learn essential JavaScript concepts.",
+    "link": "http://www.example.com/js",
+    "imgUrl": "https://source.unsplash.com/random/400x400/?javascript",
+    "createdAt": 1691922312831.0
    },
    {
     "bookId": "b103",
-    "title": "learn react in 40 min",
-    "desc": "som desc about reactJS",
-    "link": "https://source.unsplash.com/random/400x400/?nature",
-    "imgUrl": "https://source.unsplash.com/random/400x400/?react",
-    "createdAt": 1691922312831
+    "title": "Responsive Web Design",
+    "desc": "Create websites that work on all devices.",
+    "link": "http://www.example.com/responsive",
+    "imgUrl": "https://source.unsplash.com/random/400x400/?responsive",
+    "createdAt": 1691922312831.0
    }
-
   ]
  },
  {
-  "_id": "s102",
-  "title": "Backend",
-  "desc": "my backend shelf",
-  "createdAt": 1691922312831,
-  "imgUrl": "https://source.unsplash.com/random/400x400/?apple",
-  "owner": {
-   "ownerId": "u101",
-   "fullname": "Tal Amit",
-   "username": "tal.amit",
-   "email": "tal.amit0311@gmail.com",
-   "imgUrl": "https://res.cloud"
-  },
+  "_id": "64f06fc7233adeb1ac3ef8ec",
+  "title": "Mobile App Development",
+  "desc": "Dive into Mobile App Development",
+  "createdAt": 1691922312831.0,
+  "imgUrl": "https://source.unsplash.com/random/400x400/?mobileapp",
+  "ownerId": "64f0647eeb12fb06c61ae8e6",
   "books": [
    {
     "bookId": "b101",
-    "title": "nodeJS",
-    "desc": "som desc about node",
-    "link": "http://www.node.org",
-    "imgUrl": "https://source.unsplash.com/random/400x400/?react",
-    "createdAt": 1691922312831
+    "title": "Android App Development",
+    "desc": "Create apps for the Android platform.",
+    "link": "http://www.example.com/android",
+    "imgUrl": "https://source.unsplash.com/random/400x400/?android",
+    "createdAt": 1691922312831.0
    },
    {
     "bookId": "b102",
-    "title": "python",
-    "desc": "som desc about AngularJS",
-    "link": "https://docs.python.org/3/",
-    "imgUrl": "https://source.unsplash.com/random/400x400/?code",
-    "createdAt": 1691922312831
+    "title": "iOS App Development",
+    "desc": "Develop apps for the iOS ecosystem.",
+    "link": "http://www.example.com/ios",
+    "imgUrl": "https://source.unsplash.com/random/400x400/?ios",
+    "createdAt": 1691922312831.0
    },
    {
     "bookId": "b103",
-    "title": "node",
-    "desc": "som desc about node",
-    "link": "https://www.instagram.com/p/CqKIb6hueMm/?utm_source=ig_web_copy_link&igshid=MzRlODBiNWFlZA==",
-    "imgUrl": "https://source.unsplash.com/random/400x400/?fruits",
-    "createdAt": 1691922312831
+    "title": "Cross-Platform Development",
+    "desc": "Build apps that work on multiple platforms.",
+    "link": "http://www.example.com/crossplatform",
+    "imgUrl": "https://source.unsplash.com/random/400x400/?crossplatform",
+    "createdAt": 1691922312831.0
    }
-
   ]
  },
  {
-  "_id": "s103",
-  "title": "Backend",
-  "desc": "my backend shelf",
-  "createdAt": 1691922312831,
-  "imgUrl": "https://source.unsplash.com/random/400x400/?apple",
-  "owner": {
-   "ownerId": "u101",
-   "fullname": "Tal Amit",
-   "username": "tal.amit",
-   "email": "tal.amit0311@gmail.com",
-   "imgUrl": "https://res.cloud"
-  },
+  "_id": "64f06fc7233adeb1ac3ef8ed",
+  "title": "Machine Learning",
+  "desc": "Discover the world of Machine Learning",
+  "createdAt": 1691922312831.0,
+  "imgUrl": "https://source.unsplash.com/random/400x400/?machinelearning",
+  "ownerId": "64f0647eeb12fb06c61ae8e6",
   "books": [
    {
     "bookId": "b101",
-    "title": "nodeJS",
-    "desc": "som desc about node",
-    "link": "http://www.node.org",
-    "imgUrl": "https://source.unsplash.com/random/400x400/?react",
-    "createdAt": 1691922312831
+    "title": "Introduction to Machine Learning",
+    "desc": "Get started with the basics of ML.",
+    "link": "http://www.example.com/introml",
+    "imgUrl": "https://source.unsplash.com/random/400x400/?machinelearning",
+    "createdAt": 1691922312831.0
    },
    {
     "bookId": "b102",
-    "title": "python",
-    "desc": "som desc about AngularJS",
-    "link": "https://docs.python.org/3/",
-    "imgUrl": "https://source.unsplash.com/random/400x400/?code",
-    "createdAt": 1691922312831
+    "title": "Deep Learning Fundamentals",
+    "desc": "Explore the world of deep neural networks.",
+    "link": "http://www.example.com/deeplearning",
+    "imgUrl": "https://source.unsplash.com/random/400x400/?deeplearning",
+    "createdAt": 1691922312831.0
    },
    {
     "bookId": "b103",
-    "title": "node",
-    "desc": "som desc about node",
-    "link": "https://www.instagram.com/p/CqKIb6hueMm/?utm_source=ig_web_copy_link&igshid=MzRlODBiNWFlZA==",
-    "imgUrl": "https://source.unsplash.com/random/400x400/?fruits",
-    "createdAt": 1691922312831
+    "title": "Machine Learning with Python",
+    "desc": "Learn ML using the Python programming language.",
+    "link": "http://www.example.com/mlpython",
+    "imgUrl": "https://source.unsplash.com/random/400x400/?python",
+    "createdAt": 1691922312831.0
    }
-
   ]
  },
  {
-  "_id": "s104",
-  "title": "Backend",
-  "desc": "my backend shelf",
-  "createdAt": 1691922312831,
-  "imgUrl": "https://source.unsplash.com/random/400x400/?apple",
-  "owner": {
-   "ownerId": "u101",
-   "fullname": "Tal Amit",
-   "username": "tal.amit",
-   "email": "tal.amit0311@gmail.com",
-   "imgUrl": "https://res.cloud"
-  },
+  "_id": "64f06fc7233adeb1ac3ef8ee",
+  "title": "UI/UX Design",
+  "desc": "Master the art of UI/UX Design",
+  "createdAt": 1691922312831.0,
+  "imgUrl": "https://source.unsplash.com/random/400x400/?uidesign",
+  "ownerId": "64f0647eeb12fb06c61ae8e6",
   "books": [
    {
     "bookId": "b101",
-    "title": "nodeJS",
-    "desc": "som desc about node",
-    "link": "http://www.node.org",
-    "imgUrl": "https://source.unsplash.com/random/400x400/?react",
-    "createdAt": 1691922312831
+    "title": "User-Centered Design",
+    "desc": "Design for the user's needs and behaviors.",
+    "link": "http://www.example.com/usercentered",
+    "imgUrl": "https://source.unsplash.com/random/400x400/?usercentered",
+    "createdAt": 1691922312831.0
    },
    {
     "bookId": "b102",
-    "title": "python",
-    "desc": "som desc about AngularJS",
-    "link": "https://docs.python.org/3/",
-    "imgUrl": "https://source.unsplash.com/random/400x400/?code",
-    "createdAt": 1691922312831
+    "title": "Visual Design Principles",
+    "desc": "Explore the principles of effective visual design.",
+    "link": "http://www.example.com/visualdesign",
+    "imgUrl": "https://source.unsplash.com/random/400x400/?visualdesign",
+    "createdAt": 1691922312831.0
    },
    {
     "bookId": "b103",
-    "title": "node",
-    "desc": "som desc about node",
-    "link": "https://www.instagram.com/p/CqKIb6hueMm/?utm_source=ig_web_copy_link&igshid=MzRlODBiNWFlZA==",
-    "imgUrl": "https://source.unsplash.com/random/400x400/?fruits",
-    "createdAt": 1691922312831
+    "title": "Wireframing and Prototyping",
+    "desc": "Create wireframes and interactive prototypes.",
+    "link": "http://www.example.com/wireframing",
+    "imgUrl": "https://source.unsplash.com/random/400x400/?wirefr"
    }
-
-  ]
- },
- {
-  "_id": "s105",
-  "title": "Backend",
-  "desc": "my backend shelf",
-  "createdAt": 1691922312831,
-  "imgUrl": "https://source.unsplash.com/random/400x400/?apple",
-  "owner": {
-   "ownerId": "u101",
-   "fullname": "Tal Amit",
-   "username": "tal.amit",
-   "email": "tal.amit0311@gmail.com",
-   "imgUrl": "https://res.cloud"
-  },
-  "books": [
-   {
-    "bookId": "b101",
-    "title": "nodeJS",
-    "desc": "som desc about node",
-    "link": "http://www.node.org",
-    "imgUrl": "https://source.unsplash.com/random/400x400/?react",
-    "createdAt": 1691922312831
-   },
-   {
-    "bookId": "b102",
-    "title": "python",
-    "desc": "som description about AngularJS",
-    "link": "https://docs.python.org/3/",
-    "imgUrl": "https://source.unsplash.com/random/400x400/?code",
-    "createdAt": 1691922312831
-   },
-   {
-    "bookId": "b103",
-    "title": "node",
-    "desc": "som description about node",
-    "link": "https://www.instagram.com/p/CqKIb6hueMm/?utm_source=ig_web_copy_link&igshid=MzRlODBiNWFlZA==",
-    "imgUrl": "https://source.unsplash.com/random/400x400/?fruits",
-    "createdAt": 1691922312831
-   }
-
-  ]
- },
- {
-  "_id": "s106",
-  "title": "Backend",
-  "description": "my backend shelf",
-  "createdAt": 1691922312831,
-  "imgUrl": "https://source.unsplash.com/random/400x400/?apple",
-  "owner": {
-   "ownerId": "u101",
-   "fullname": "Tal Amit",
-   "username": "tal.amit",
-   "email": "tal.amit0311@gmail.com",
-   "imgUrl": "https://res.cloud"
-  },
-  "books": [
-   {
-    "bookId": "b101",
-    "title": "nodeJS",
-    "desc": "som description about node",
-    "link": "http://www.node.org",
-    "imgUrl": "https://source.unsplash.com/random/400x400/?react",
-    "createdAt": 1691922312831
-   },
-   {
-    "bookId": "b102",
-    "title": "python",
-    "desc": "som description about AngularJS",
-    "link": "https://docs.python.org/3/",
-    "imgUrl": "https://source.unsplash.com/random/400x400/?code",
-    "createdAt": 1691922312831
-   },
-   {
-    "bookId": "b103",
-    "title": "node",
-    "desc": "som description about node",
-    "link": "https://www.instagram.com/p/CqKIb6hueMm/?utm_source=ig_web_copy_link&igshid=MzRlODBiNWFlZA==",
-    "imgUrl": "https://source.unsplash.com/random/400x400/?fruits",
-    "createdAt": 1691922312831
-   }
-
   ]
  }
 ]

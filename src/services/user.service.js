@@ -19,7 +19,8 @@ export const userService = {
     getById,
     remove,
     update,
-    changeScore
+    changeScore,
+    getEmptyUser
 }
 
 window.userService = userService
@@ -100,11 +101,19 @@ function getLoggedinUser() {
 }
 
 
-// ; (async () => {
-//     utilService.saveToStorage(USER_DB, user)
-//     login(user[0])
+function getEmptyUser() {
+    return {
+        fullname: "",
+        username: "",
+        email: "",
+        imgUrl: ""
+    }
+}
 
-// })()
+; (async () => {
+    utilService.saveToStorage(USER_DB, user)
+    login(user[0])
+})()
 
 
 

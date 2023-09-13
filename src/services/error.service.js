@@ -12,16 +12,19 @@ function setup() {
  window.$error = errorService
 }
 
-
+const logs = []
 function logError(err, routeHistory) {
  const errorToLog = _createNewError(err)
 
 
  if (import.meta.env.MODE !== "development") {
   console.error('%cError', _getStyles(), errorToLog)
-  httpService.post(DEV_BASE_URL, errorToLog)
+  logs.push(errorToLog)
+  // httpService.post(DEV_BASE_URL, errorToLog)
   return
  }
+ logs.push(errorToLog)
+ console.log(logs);
  console.info('%cError', _getStyles(), errorToLog)
 }
 

@@ -21,6 +21,7 @@ import AppLogin from './../views/AppLogin.jsx'
 import DashBoard from './../views/DashBoard.jsx'
 import ShelfDetails from './../views/ShelfDetails.jsx'
 import BookDetails from './../views/BookDetails.jsx'
+import Test from './../views/Test.jsx'
 
 import React from 'react'
 
@@ -62,6 +63,7 @@ const RouterView = () => {
  return (
   <Routes>
    <Route path="/" name="home" element={<AppHome />} />
+   <Route path="/test" name="home" element={<Test />} />
    <Route path="/shelf" name="app" element={<RouteGuard routeName="shelf"><AppIndex /></RouteGuard>} />
    <Route path="/explore" name="explore" element={<RouteGuard><AppExplore /></RouteGuard>} />
 

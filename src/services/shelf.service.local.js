@@ -13,8 +13,6 @@ export const shelfService = {
     getById,
     save,
     remove,
-    getEmptyCar,
-    addCarMsg,
     getBookById,
     removeBook,
     saveBook,
@@ -135,12 +133,30 @@ async function addCarMsg(shelfId, txt) {
 
 
 
-function getEmptyCar() {
+function getEmptyShelf() {
     return {
-        vendor: 'Susita-' + (Date.now() % 1000),
-        price: utilService.getRandomIntInclusive(1000, 9000),
+        title: "",
+        desc: "",
+        createdAt: null,
+        imgUrl: "",
+        ownerId: "",
+        books: [],
     }
+
 }
+function getEmptyBook() {
+    return {
+        bookId: "",
+        title: "",
+        desc: "",
+        link: "",
+        imgUrl: "",
+        createdAt: null
+    }
+
+}
+
+
 
 
 // TEST DATA
