@@ -1,9 +1,20 @@
-import { UPDATE_USER, SET_USER, DISPLAY_NAV } from "../reducers/user.reducer"
+import { UPDATE_USER, SET_USER, DISPLAY_NAV, DO_LOGIN } from "../reducers/user.reducer"
 import { userService } from "../../services/user.service"
 
 export function spendBalance(amount) {
     return async (dispatch) => {
         dispatch({ type: 'SPEND_BALANCE', amount })
+    }
+}
+export function login(credentials) {
+    return async (dispatch) => {
+        try {
+            const user = await userService.login(credentials)
+            dispatch({ type: DO_LOGIN, user })
+        } catch (error) {
+
+        }
+        console.log(credentials);
     }
 }
 export function getUser(amount) {
