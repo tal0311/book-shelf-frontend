@@ -12,33 +12,38 @@ const AppLogin = () => {
   const navigate = useNavigate()
   useEffect(() => {
     if (loggedInUser) {
-      console.log('loggedInUser', loggedInUser);
       navigate('/shelf')
-
     }
   }, [loggedInUser])
 
   const dispatch = useDispatch()
   const handleSubmit = (ev) => {
     ev.preventDefault()
-    console.log('submit');
     const credentials = Object.fromEntries(new FormData(ev.target));
-    console.debug('♠️ ~ file: AppLogin.jsx:10 ~ handleSubmit ~ credentials:', credentials)
     dispatch(login(credentials))
   }
   const togglePassWordVisability = () => {
     setIsVisible(!isVisible)
   }
 
+  function handleChange({ target }) {
+    const field = target.name
+    const value = target.value
+    console.log(field, value);
+    // setCredentials({ ...credentials, [field]: value })
+  }
+
   return (
     <section className='app-login grid'>
       <form onSubmit={handleSubmit} >
         <label htmlFor="text">username</label>
-        <input type="text" name='username' value={credentials.username} />
+        <input type="text" name='username' onChange={handleChange} value={credentials.username} />
 
         <div className="password-container">
           <label htmlFor="password">password</label>
-          <input type={isVisible ? 'text' : 'password'} value={credentials.password} name='password' />
+          <input type={isVisible ? 'text' : 'password'}
+            onChange={handleChange}
+            value={credentials.password} name='password' />
           <i onClick={togglePassWordVisability}
             className="toggle-password material-symbols-outlined">{isVisible ? 'visibility_off' : 'visibility'}</i>
         </div>

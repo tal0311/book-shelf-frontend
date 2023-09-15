@@ -10,11 +10,11 @@ export function login(credentials) {
     return async (dispatch) => {
         try {
             const user = await userService.login(credentials)
+            console.log(user);
             dispatch({ type: DO_LOGIN, user })
         } catch (error) {
 
         }
-        console.log(credentials);
     }
 }
 export function getUser(amount) {

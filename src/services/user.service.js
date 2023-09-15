@@ -1,6 +1,6 @@
-import { storageService } from './async-storage.service'
-import { httpService } from './http.service'
-import { utilService } from './util.service'
+import { storageService } from './async-storage.service.js'
+import { httpService } from './http.service.js'
+import { utilService } from './util.service.js'
 import axios from 'axios'
 // import { store } from '../store/store'
 // import { socketService, SOCKET_EVENT_USER_UPDATED, SOCKET_EMIT_USER_WATCH } from './socket.service'
@@ -9,6 +9,10 @@ import user from './../../data/user.json' assert {type: 'json'}
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 const USER_DB = 'user'
+
+const BASE_URL = process.env.NODE_ENV === 'production'
+    ? '/api/'
+    : 'http://localhost:3030/api/'
 
 export const userService = {
     login,
@@ -60,15 +64,28 @@ async function update({ _id, score }) {
 
 
 async function login({ username, password }) {
+
     // const users = await storageService.query('user')
     // const user = users.find(user => user.username === userCred.username)
-    // const user = await httpService.post('auth/login', { username, password })
-    const res = await axios.post('http://localhost:3000/api/auth/login', { username, password })
-    const user = res.data
-    if (user) {
-        // socketService.login(user._id)
-        return saveLocalUser(user)
+    try {
+        const user = await httpService.post('auth/login', { username, password })
+        // console.log('user:', user)
+        // const res = await axios.post(BASE_URL + 'auth/login', { username, password })
+
+        // const user = res.data
+        console.log('user:', user)
+
+        if (user) {
+            // socketService.login(user._id)
+            return saveLocalUser(user)
+        }
+
+    } catch (error) {
+        console.log(error);
+
     }
+
+
 }
 async function signup(userCred) {
     userCred.score = 10000
