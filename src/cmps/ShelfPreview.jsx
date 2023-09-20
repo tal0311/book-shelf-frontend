@@ -5,7 +5,7 @@ import ItemActions from './ItemActions'
 
 const ShelfPreview = ({ shelf, onAction, updateShelf }) => {
  const [isEditable, setEditable] = useState(false)
- const { _id, title, desc, createdAt, imgUrl, books } = shelf
+ const { _id, title, desc, createdAt, booksCount, imgUrl } = shelf
  const navigate = useNavigate()
 
  const navigateTo = (shelfId) => {
@@ -41,7 +41,7 @@ const ShelfPreview = ({ shelf, onAction, updateShelf }) => {
    <h2 onBlur={updateItem} contentEditable={isEditable}>{title}</h2>
    <p contentEditable={isEditable}>{desc}</p>
    <p >{createdAt}</p>
-   <small><span>Items on this shelf</span> {books.length}</small>
+   <small><span>Items on this shelf</span> {booksCount}</small>
    <img src={imgUrl} alt="" />
 
    <ItemActions itemId={shelf._id} onShelfAction={onShelfAction} />

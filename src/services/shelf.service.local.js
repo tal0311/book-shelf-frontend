@@ -8,6 +8,9 @@ import axios from 'axios'
 
 const STORAGE_KEY = 'shelf'
 
+const BASE_URL = process.env.NODE_ENV === 'production'
+    ? '/api/'
+    : '//localhost:3030/api/'
 export const shelfService = {
     query,
     getById,
@@ -23,7 +26,10 @@ window.shelfService = shelfService
 
 
 async function query(filterBy = { txt: '' }) {
-    var shelves = await storageService.query(STORAGE_KEY)
+    const response = await fetch(BASE_URL + 'shelf')
+    const shelves = await response.json()
+    // const shelves = await httpService.get('shelf')
+    // var shelves = await storageService.query(STORAGE_KEY)
     // if (filterBy.txt) {
     //     const regex = new RegExp(filterBy.txt, 'i')
     //     shelfs = shelfs.filter(shelf => regex.test(shelf.vendor) || regex.test(shelf.description))

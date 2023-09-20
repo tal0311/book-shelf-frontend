@@ -1,15 +1,13 @@
 export const UPDATE_USER = 'UPDATE_USER'
 export const SET_USER = 'SET_USER'
 export const DISPLAY_NAV = 'DISPLAY_NAV'
+export const DO_LOGIN = 'DO_LOGIN'
 
 
 
 
 const INITIAL_STATE = {
-    loggedInUser: {
-        name: 'Tal Amit',
-        libList: [],
-    },
+    loggedInUser: null,
     isNavDisplay: false
 }
 
@@ -22,7 +20,7 @@ export function userReducer(state = INITIAL_STATE, action) {
                 ...state,
                 loggedInUser: { ...loggedInUser, [action.key]: action.value }
             }
-        case SET_USER:
+        case DO_LOGIN:
 
             return {
                 ...state,
