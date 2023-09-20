@@ -11,6 +11,7 @@ export function login(credentials) {
         try {
             const user = await userService.login(credentials)
             console.log(user);
+            if (!user) return
             dispatch({ type: DO_LOGIN, user })
         } catch (error) {
 
