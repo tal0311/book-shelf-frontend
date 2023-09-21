@@ -6,7 +6,7 @@ const BASE_URL = process.env.NODE_ENV === 'production'
     : '//localhost:3030/api/'
 
 
-const axios = Axios.create({
+var axios = Axios.create({
     withCredentials: true
 })
 
@@ -35,7 +35,7 @@ async function ajax(endpoint, method = 'GET', data = null) {
         })
         return res.data
     } catch (err) {
-        console.log(`Had Issues ${method}ing to the backend, endpoint: ${endpoint}, with data:`, data)
+        console.info(`Had Issues ${method}ing to the backend, endpoint: ${endpoint}, with data:`, data)
         console.dir(err)
         if (err.response && err.response.status === 401) {
             sessionStorage.clear()

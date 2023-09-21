@@ -68,16 +68,8 @@ async function login({ username, password }) {
     // const users = await storageService.query('user')
     // const user = users.find(user => user.username === userCred.username)
     try {
-
-
-        const res = await fetch(BASE_URL + 'auth/login', {
-            method: 'POST',
-            body: JSON.stringify({ username, password }),
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
-        const user = await res.json()
+        const user = await httpService.post('auth/login', { username, password })
+        console.log(user);
         if (user) {
             // socketService.login(user._id)
             return saveLocalUser(user)

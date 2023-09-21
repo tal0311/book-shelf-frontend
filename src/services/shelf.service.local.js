@@ -26,9 +26,7 @@ window.shelfService = shelfService
 
 
 async function query(filterBy = { txt: '' }) {
-    const response = await fetch(BASE_URL + 'shelf')
-    const shelves = await response.json()
-    // const shelves = await httpService.get('shelf')
+    const shelves = await httpService.get('shelf')
     // var shelves = await storageService.query(STORAGE_KEY)
     // if (filterBy.txt) {
     //     const regex = new RegExp(filterBy.txt, 'i')
