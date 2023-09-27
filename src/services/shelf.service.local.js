@@ -26,9 +26,7 @@ window.shelfService = shelfService
 
 
 async function query(filterBy = { txt: '' }) {
-    const response = await fetch(BASE_URL + 'shelf')
-    const shelves = await response.json()
-    // const shelves = await httpService.get('shelf')
+    const shelves = await httpService.get('shelf')
     // var shelves = await storageService.query(STORAGE_KEY)
     // if (filterBy.txt) {
     //     const regex = new RegExp(filterBy.txt, 'i')
@@ -40,14 +38,17 @@ async function query(filterBy = { txt: '' }) {
     return shelves
 }
 
-function getById(shelfId) {
-    return storageService.get(STORAGE_KEY, shelfId)
+async function getById(shelfId) {
+    return await httpService.get('shelf', shelfId)
+    // return storageService.get(STORAGE_KEY, shelfId)
 }
 
 async function remove(shelfId) {
-    await storageService.remove(STORAGE_KEY, shelfId)
+    return await httpService.delete('shelf', shelfId)
+    // await storageService.remove(STORAGE_KEY, shelfId)
 }
 
+// move to BE
 async function getItemsBySearchResults(searchTerm) {
     const items = []
     const shelves = await query()
@@ -83,37 +84,42 @@ function _createSearchItem(item, type, shelfId = null) {
 async function save(shelf) {
     var savedShelf
     if (shelf._id) {
-        savedShelf = await storageService.put(STORAGE_KEY, shelf)
+        // savedShelf = await storageService.put(STORAGE_KEY, shelf)
+        savedShelf = await httpService.put('shelf/' + shelf._id, shelf)
     } else {
         // Later, owner is set by the backend
-        shelf.owner = userService.getLoggedinUser()
-        savedShelf = await storageService.post(STORAGE_KEY, shelf)
+        // shelf.owner = userService.getLoggedinUser()
+        // savedShelf = await storageService.post(STORAGE_KEY, shelf)
+        savedShelf = await httpService.post('shelf', shelf)
     }
     return savedShelf
 }
 
 async function removeBook(bookId, shelfId) {
-    const shelf = await storageService.get(STORAGE_KEY, shelfId)
-    shelf.books = shelf.books.filter(book => book.bookId !== bookId)
-    await storageService.put(STORAGE_KEY, shelf)
+    // const shelf = await storageService.get(STORAGE_KEY, shelfId)
+    // shelf.books = shelf.books.filter(book => book.bookId !== bookId)
+    // await storageService.put(STORAGE_KEY, shelf)
+    await httpService.delete('book', shelfId, bookId)
 }
 
 async function getBookById(bookId, shelfId) {
-    const shelf = await storageService.get(STORAGE_KEY, shelfId)
-    console.debug('♠️ ~ file: shelf.service.local.js:39 ~ getBookById ~ shelf:', shelf)
-    return shelf.books.find(book => book.bookId === bookId)
+    // const shelf = await storageService.get(STORAGE_KEY, shelfId)
+    return await httpService.get('book', shelfId, bookId)
+    // console.debug('♠️ ~ file: shelf.service.local.js:39 ~ getBookById ~ shelf:', shelf)
+    // return shelf.books.find(book => book.bookId === bookId)
 }
 
 async function saveBook(book, shelfId) {
-    const shelf = await storageService.get(STORAGE_KEY, shelfId)
-    if (book.bookId) {
-        const bookIdx = shelf.books.findIndex(currBook => currBook.bookId === book.bookId)
-        shelf.books.splice(bookIdx, 1, book)
-    } else {
-        book.bookId = utilService.makeId()
-        shelf.books.push(book)
-    }
-    await storageService.put(STORAGE_KEY, shelf)
+    // const shelf = await storageService.get(STORAGE_KEY, shelfId)
+    // if (book.bookId) {
+    //     const bookIdx = shelf.books.findIndex(currBook => currBook.bookId === book.bookId)
+    //     shelf.books.splice(bookIdx, 1, book)
+    // } else {
+    //     book.bookId = utilService.makeId()
+    //     shelf.books.push(book)
+    // }
+    // await storageService.put(STORAGE_KEY, shelf)
+    return await httpService.put('book' + shelfId, book)
 }
 
 async function getBookMetadata(url) {

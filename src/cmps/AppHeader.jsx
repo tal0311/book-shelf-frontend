@@ -17,6 +17,10 @@ const AppHeader = () => {
   {
    name: 'Contact',
    path: '/contact'
+  },
+  {
+   name: 'Test',
+   path: '/test?tab=inbox'
   }
  ]
 
