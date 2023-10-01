@@ -39,12 +39,12 @@ async function query(filterBy = { txt: '' }) {
 }
 
 async function getById(shelfId) {
-    return await httpService.get('shelf', shelfId)
+    return await httpService.get('shelf/' + shelfId)
     // return storageService.get(STORAGE_KEY, shelfId)
 }
 
 async function remove(shelfId) {
-    return await httpService.delete('shelf', shelfId)
+    return await httpService.delete('shelf/' + shelfId)
     // await storageService.remove(STORAGE_KEY, shelfId)
 }
 
@@ -52,12 +52,13 @@ async function remove(shelfId) {
 async function getItemsBySearchResults(searchTerm) {
     const items = []
     const shelves = await query()
+
     const regex = new RegExp(searchTerm, 'i')
-    shelves.forEach(shelf => {
+    shelves?.forEach(shelf => {
         if (regex.test(shelf.title) || regex.test(shelf.desc)) {
             items.push(_createSearchItem(shelf, 'shelf'))
         }
-        shelf.books.forEach(book => {
+        shelf.books?.forEach(book => {
             if (regex.test(book.title)
                 || regex.test(book.subtitle)
                 || regex.test(book.authors)) {
