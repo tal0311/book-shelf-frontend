@@ -21,6 +21,7 @@ import AppLogin from './../views/AppLogin.jsx'
 import DashBoard from './../views/DashBoard.jsx'
 import ShelfDetails from './../views/ShelfDetails.jsx'
 import BookDetails from './../views/BookDetails.jsx'
+import NotFound from './../views/NotFound.jsx'
 import Test from './../views/Test.jsx'
 
 import React from 'react'
@@ -74,7 +75,7 @@ const RouterView = () => {
 
    <Route path="/login" name="login" element={<AppLogin />} />
    <Route path="/dashboard" name="dashboard" element={<RouteGuard routeName="dashboard"><DashBoard /></RouteGuard>} />
-   <Route path="*" element={<Outlet />} />
+   <Route path="*" element={<NotFound />} />
   </Routes>
 
  )
