@@ -20,6 +20,7 @@ const BookDetails = () => {
 
  const loadBook = async () => {
   const book = await shelfService.getBookById(bookId, shelfId)
+
   // if (book) dialogRef.current.showModal()
   setBook(book)
  }

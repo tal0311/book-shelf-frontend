@@ -1,0 +1,19 @@
+.page-note-found {
+ height: 80vh;
+ display: grid;
+ place-content: center;
+ text-align: center;
+ color: inherit;
+
+ h1 {
+  font-size: 5rem;
+  color: $clr2;
+ }
+ p {
+  font-size: 1.5rem;
+ }
+ button {
+  @include app-btn;
+  background: lighten($clr7, 20);
+ }
+}
