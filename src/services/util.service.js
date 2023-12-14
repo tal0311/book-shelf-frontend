@@ -117,6 +117,7 @@ function isMobile() {
     return false
 }
 
+
 function getImg(url) {
     return new URL(url, import.meta.url).href
 }
